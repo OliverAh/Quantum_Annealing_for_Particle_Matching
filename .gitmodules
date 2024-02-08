@@ -1,0 +1,3 @@
+[submodule "ext/embera"]
+	path = ext/embera
+	url = https://github.com/joseppinilla/embera.git

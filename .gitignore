@@ -1,0 +1,7 @@
+.git/
+**/*Token*
+**/Literature/
+**/__pycache__/
+**/.ipynb_checkpoints/
+**/ext/embera_orig/
+**/ext/glpk/
