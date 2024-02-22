@@ -173,6 +173,25 @@ def q_part_sparse(num_particles):
     shape = (num_particles*num_particles, num_particles*num_particles)
     return sp.sparse.csr_array((data, (row_indices, col_indices)), shape=shape) - sp.sparse.eye((num_particles*num_particles), format='csr')
 
+def q_part_sparse_fast(num_particles):
+    #####
+    #
+    # This is a faster version of q_part_sparse by avoiding the triply nested loop, as it is essentially a block matrix,
+    # with blocks on the main diagonal.
+    #
+    #####
+    #q_part = np.zeros((num_particles*num_particles, num_particles*num_particles))
+    #data = np.zeros(num_particles*num_particles)
+    #row_indices = np.zeros(num_particles*num_particles)
+    #col_indices = np.zeros(num_particles*num_particles)
+    
+
+    block = sp.sparse.csr_array(np.triu(2*2 * np.ones((num_particles, num_particles)) - 5 * np.eye(num_particles)))
+    #print(block)
+    #print(sp.sparse.block_diag([block]*num_particles, format='csr').toarray())
+    
+    return sp.sparse.block_diag([block]*num_particles, format='csr')
+    
 #Q_3
 def q_pos(num_particles):
     q_pos = np.zeros((num_particles*num_particles, num_particles*num_particles))
@@ -221,3 +240,42 @@ def q_pos_sparse(num_particles):
     col_indices = col_indices.astype(int)
     shape = (num_particles*num_particles, num_particles*num_particles)
     return sp.sparse.csr_array((data, (row_indices, col_indices)), shape=shape) - sp.sparse.eye((num_particles*num_particles), format='csr')
+
+def q_pos_sparse_fast(num_particles):
+    #####
+    #
+    # This is a faster version of q_pos_sparse by avoiding the triply nested loop. Instead a nested list comprehension is used.
+    #
+    #####
+    
+    #num_nonzeros = int(num_particles*num_particles*(num_particles-1)/2)
+    #data = np.zeros(num_nonzeros)
+    #row_indices = np.zeros(num_nonzeros)
+    #col_indices = np.zeros(num_nonzeros)
+
+    #row_indices = [i*num_particles+j for j in range(num_particles) for i in range(num_particles) for k in range(i+1, num_particles)]
+    #print('      finished row_indices')
+    #col_indices = [k*num_particles+j for j in range(num_particles) for i in range(num_particles) for k in range(i+1, num_particles)]
+    #print('      finished col_indices')
+    #assert len(row_indices) == len(col_indices), 'Lengths of row_indices and col_indices are different. rows: {}, cols: {}'.format(len(row_indices), len(col_indices))
+    #data = 2 *2 * np.ones(len(row_indices))
+    #print('      finished data')
+    #shape = (num_particles*num_particles, num_particles*num_particles)
+    #return sp.sparse.csr_array((data, (row_indices, col_indices)), shape=shape) - sp.sparse.eye((num_particles*num_particles), format='csr')
+
+    diags = np.ones(num_particles*num_particles)
+    data = np.zeros((num_particles, num_particles*num_particles))
+    data[0,:] = -1 * diags
+    data[1:,:] = 2*2 * diags
+    #np.array([diags, 2*2 * diags for i in range(n)])
+    #print(data)
+    offsets = np.array(range(0,num_particles*num_particles,num_particles))
+    #print(offsets)
+    r = sp.sparse.dia_array((data, offsets), shape=(num_particles*num_particles, num_particles*num_particles))
+    #shape = (n*n, n*n)
+    #r = sp.sparse.dia_array(shape, np.float64)
+    #r.setdiag(diags, 0)
+    #for i in range(1,n):
+    #    print(i)
+    #    r.setdiag(2*2 * diags, n*i)
+    return r

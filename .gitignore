@@ -1,10 +1,12 @@
 .git/
+.vscode/
 **/*Token*
 **/Literature/
 **/__pycache__/
 **/.ipynb_checkpoints/
 **/ext/embera_orig/
 **/ext/glpk/
+**/**.gif
 
 
 # files larger 100MB

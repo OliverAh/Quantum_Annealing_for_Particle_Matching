@@ -1,0 +1,16 @@
+name: masterth_file
+channels:
+  - defaults
+  - conda-forge
+  - https://conda.anaconda.org/gurobi
+dependencies:
+  - gurobi
+  - h5py
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pandas
+  - pip
+  - python=3.12
+  - scipy
+prefix: C:\Users\oahre\anaconda3\envs\masterth_file
