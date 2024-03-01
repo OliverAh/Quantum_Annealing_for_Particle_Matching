@@ -12,3 +12,5 @@
 # files larger 100MB
 00_tests/test.h5
 00_tests/test_workflow.h5
+00_tests/01_out/test_multithreading/embeddings/**/**.h5
+00_tests/01_out/test_multithreading/**/**.h5

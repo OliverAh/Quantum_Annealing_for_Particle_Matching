@@ -39,7 +39,7 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
     if os.path.isfile(file_name_path):
         with h5py.File(file_name_path, 'r') as f:
             if data_name_int in f.keys():
-                if data_name == 'sampleset' or data_name == 'sampleset_sa':
+                if data_name == 'sampleset' or data_name == 'sampleset_sa' or 'composite':
                     if data_name_int in f.keys() and _is_set_identifier_in_file_already(f[data_name], dict_data['set_identifier']):
                         if overwrite_data_in_file==False:
                             print('Sampleset with set identifier {} already exists in file. Set overwrite_data_in_file=True to overwrite data in file. Sorting out...'.format(dict_data['set_identifier']))
@@ -102,14 +102,26 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
                         file_handle_recur[data_name_recur].create_group(key)
                         write_dict_to_hdf5_recursively(file_handle_recur, dict_data_recur=value, data_name_recur=data_name_recur+'/'+key)
                     else:
+                        key_2 = key
+                        if not isinstance(key, (str, bytes)):
+                            key_2 = str(key)
+                        
                         if value is None:
-                            file_handle_recur[data_name_recur].create_dataset(key, data='None')
+                            file_handle_recur[data_name_recur].create_dataset(key_2, data='None')
+                        elif isinstance(value, (int, float, bool)):
+                            file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
                         elif isinstance(value, set):
-                            file_handle_recur[data_name_recur].create_dataset(key, data=list(value))
-                        elif not isinstance(key, str):
-                            file_handle_recur[data_name_recur].create_dataset(str(key), data=value)
+                            file_handle_recur[data_name_recur].create_dataset(key_2, data=list(value))
+                        elif isinstance(value, (np.ndarray, str, list, tuple)):
+                            try:
+                                file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
+                            except:
+                                file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
+                        #elif not isinstance(key, str):
+                        #    file_handle_recur[data_name_recur].create_dataset(str(key), data=value)
                         else:
-                            file_handle_recur[data_name_recur].create_dataset(key, data=value)
+                            #print(type(value))
+                            file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
             
             if data_name == 'embedding':
                 dict_data_recur = {str(key): value for key, value in dict_data.items()} # keys are just integers, so convert to string
@@ -151,7 +163,7 @@ def read_embedding_from_hdf5_file(file_name_path='', data_name: str = 'embedding
     except:
         raise ValueError('Could not read embedding from file {}'.format(file_name_path))
     
-def read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
+def _read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
     """ Reads groups and their sub-structures recursively from a hdf5 file."""
 
     intermediate_dict = {}
@@ -159,11 +171,29 @@ def read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
         intermediate_dict.update({'attrs': {key: value for key, value in obj.attrs.items()}})
     for key, value in obj.items():
         if isinstance(value, h5py.Group):
-            intermediate_dict.update(read_groups_recursively_from_hdf5_object(value, name=key))
-        else:
-            intermediate_dict.update({key: value[()]})
+            intermediate_dict.update(_read_groups_recursively_from_hdf5_object(value, name=key))
+        elif isinstance(value, h5py.Dataset):
+            if value.attrs.keys():
+                intermediate_dict.update({key: {'attrs': {attr_key: attr_value for attr_key, attr_value in value.attrs.items()}, 'data': value[()]}})
+            else:
+                intermediate_dict.update({key: {'attrs': {}, 'data': value[()]}})
     
     if name == '':
         return intermediate_dict
     else:
         return {name: intermediate_dict}
+    
+def read_info_from_hdf5_file(file_name_path='', infoset_name: str = ''):
+    """ Reads the info for variation study from a hdf5 file. """
+    if file_name_path[-3:] != '.h5':
+        raise ValueError('file_name_path must end with .h5, i.e. must be a hdf5 file')
+    try: 
+        with h5py.File(file_name_path, 'r') as file_handle:
+            if infoset_name == '':
+                return _read_groups_recursively_from_hdf5_object(file_handle)
+            elif infoset_name in file_handle.keys():
+                return _read_groups_recursively_from_hdf5_object(file_handle[infoset_name])
+            else:
+                raise ValueError('File does not contain data with name {}'.format(infoset_name))
+    except:
+        raise ValueError('Could not read info from file {}'.format(file_name_path))

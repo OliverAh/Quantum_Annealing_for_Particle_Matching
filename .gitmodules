@@ -1,3 +1,6 @@
 [submodule "ext/embera"]
 	path = ext/embera
 	url = https://github.com/joseppinilla/embera.git
+[submodule "ext/pulp"]
+	path = ext/pulp
+	url = https://github.com/coin-or/pulp.git

@@ -1,0 +1,4181 @@
+Available solvers based on specifications (client):  [StructuredSolver(id='Advantage_system5.4')]
+Chosen solver based on specifications (solver):  StructuredSolver(id='Advantage_system5.4') , status is online:  True
+    Solver properties keys:  dict_keys(['num_qubits', 'qubits', 'couplers', 'h_range', 'j_range', 'supported_problem_types', 'parameters', 'vfyc', 'anneal_offset_ranges', 'anneal_offset_step', 'anneal_offset_step_phi0', 'annealing_time_range', 'chip_id', 'default_annealing_time', 'default_programming_thermalization', 'default_readout_thermalization', 'extended_j_range', 'h_gain_schedule_range', 'max_anneal_schedule_points', 'max_h_gain_schedule_points', 'num_reads_range', 'per_qubit_coupling_range', 'problem_run_duration_range', 'problem_timing_data', 'programming_thermalization_range', 'readout_thermalization_range', 'tags', 'topology', 'category', 'quota_conversion_rate'])
+        problem_run_duration_range:  [0.0, 1000000.0]
+    Solver parameters keys:  dict_keys(['anneal_offsets', 'anneal_schedule', 'annealing_time', 'answer_mode', 'auto_scale', 'flux_biases', 'flux_drift_compensation', 'h_gain_schedule', 'initial_state', 'max_answers', 'num_reads', 'programming_thermalization', 'readout_thermalization', 'reduce_intersample_correlation', 'reinitialize_state'])
+    Solver properties parameters keys:  dict_keys(['anneal_offsets', 'anneal_schedule', 'annealing_time', 'answer_mode', 'auto_scale', 'flux_biases', 'flux_drift_compensation', 'h_gain_schedule', 'initial_state', 'max_answers', 'num_reads', 'programming_thermalization', 'readout_thermalization', 'reduce_intersample_correlation', 'reinitialize_state'])
+Execution started.
+starting thread Thread_submittter_000
+start problem b'zz_8382606463' by Thread_submittter_000
+starting thread Thread_submittter_001
+start problem b'zz_2203735776' by Thread_submittter_001
+starting thread Thread_submittter_002
+start problem b'zz_4771589727' by Thread_submittter_002
+starting thread Thread_submittter_003
+start problem b'zz_7419006802' by Thread_submittter_003
+starting thread Thread_submittter_004
+start problem b'zz_3582620427' by Thread_submittter_004
+starting thread Thread_writer_000
+starting thread Thread_reporter_000
+Queue sizes: problems_to_submit = 1019, answers_to_write = 0
+Queue sizes: problems_to_submit = 1019, answers_to_write = 0
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 1019, answers_to_write = 4
+Queue sizes: problems_to_submit = 1019, answers_to_write = 4
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_2821025404' by Thread_submittter_000
+Queue sizes: problems_to_submit = 1018, answers_to_write = 4
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1093626550' by Thread_submittter_004
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 1017, answers_to_write = 5
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_4977723765' by Thread_submittter_001
+  successfully finished writing data to file
+start problem b'zz_1139382592' by Thread_submittter_002
+Queue sizes: problems_to_submit = 1015, answers_to_write = 8
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_9487425858' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_6589359834' by Thread_submittter_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 1013, answers_to_write = 11
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_2246633045' by Thread_submittter_004
+Queue sizes: problems_to_submit = 1012, answers_to_write = 13
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_2915183779' by Thread_submittter_001
+Queue sizes: problems_to_submit = 1011, answers_to_write = 15
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_7460799673' by Thread_submittter_002
+     timing works out
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1018641287' by Thread_submittter_003
+Queue sizes: problems_to_submit = 1009, answers_to_write = 18
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_9684911674' by Thread_submittter_000
+     timing works out
+Queue sizes: problems_to_submit = 1008, answers_to_write = 21
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_0860421515' by Thread_submittter_004
+  successfully finished writing data to file
+start problem b'zz_3026044391' by Thread_submittter_001
+Queue sizes: problems_to_submit = 1006, answers_to_write = 24
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_1190283278' by Thread_submittter_002
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 1005, answers_to_write = 24
+  successfully finished writing data to file
+start problem b'zz_4405357966' by Thread_submittter_003
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_7692298627' by Thread_submittter_000
+Queue sizes: problems_to_submit = 1003, answers_to_write = 27
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_0765987237' by Thread_submittter_004
+Queue sizes: problems_to_submit = 1002, answers_to_write = 29
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_5926788350' by Thread_submittter_001
+Queue sizes: problems_to_submit = 1001, answers_to_write = 32
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_5362833042' by Thread_submittter_002
+  successfully finished writing data to file
+start problem b'zz_3109034370' by Thread_submittter_003
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 999, answers_to_write = 34
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_0368233311' by Thread_submittter_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_8176177217' by Thread_submittter_004
+     timing works out
+Queue sizes: problems_to_submit = 997, answers_to_write = 39
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_2049076458' by Thread_submittter_001
+Queue sizes: problems_to_submit = 996, answers_to_write = 38
+  successfully finished writing data to file
+start problem b'zz_7233906354' by Thread_submittter_003
+Queue sizes: problems_to_submit = 995, answers_to_write = 39
+     timing works out
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_9913919105' by Thread_submittter_002
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_4021330270' by Thread_submittter_000
+  successfully finished writing data to file
+start problem b'zz_3940816143' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 992, answers_to_write = 42
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_0948658617' by Thread_submittter_003
+Queue sizes: problems_to_submit = 991, answers_to_write = 46
+  successfully finished writing data to file
+start problem b'zz_0417136597' by Thread_submittter_001
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 990, answers_to_write = 48
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_7784470030' by Thread_submittter_002
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_3350732976' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_7170111737' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 987, answers_to_write = 50
+Queue sizes: problems_to_submit = 987, answers_to_write = 50
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_4369736075' by Thread_submittter_003
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_2492590177' by Thread_submittter_001
+Queue sizes: problems_to_submit = 985, answers_to_write = 55
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_9159552509' by Thread_submittter_002
+Queue sizes: problems_to_submit = 984, answers_to_write = 58
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1399234539' by Thread_submittter_000
+  successfully finished writing data to file
+start problem b'zz_3121206396' by Thread_submittter_004
+     timing works out
+Queue sizes: problems_to_submit = 982, answers_to_write = 59
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_5137342662' by Thread_submittter_003
+  successfully finished writing data to file
+start problem b'zz_4386858657' by Thread_submittter_001
+Queue sizes: problems_to_submit = 980, answers_to_write = 62
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_7915852278' by Thread_submittter_002
+Queue sizes: problems_to_submit = 979, answers_to_write = 66
+  successfully finished writing data to file
+start problem b'zz_0675798268' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 978, answers_to_write = 66
+Queue sizes: problems_to_submit = 978, answers_to_write = 66
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_8857380670' by Thread_submittter_004
+  successfully finished writing data to file
+start problem b'zz_7197695098' by Thread_submittter_001
+  successfully finished writing data to file
+start problem b'zz_1528647377' by Thread_submittter_003
+Queue sizes: problems_to_submit = 975, answers_to_write = 70
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_9320793238' by Thread_submittter_002
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 974, answers_to_write = 74
+     timing works out
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_9196671689' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 973, answers_to_write = 74
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_3958891935' by Thread_submittter_004
+  successfully finished writing data to file
+start problem b'zz_3871073843' by Thread_submittter_001
+Queue sizes: problems_to_submit = 971, answers_to_write = 77
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_7068475542' by Thread_submittter_003
+  successfully finished writing data to file
+start problem b'zz_1276474417' by Thread_submittter_002
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_8761998685' by Thread_submittter_000
+Queue sizes: problems_to_submit = 968, answers_to_write = 82
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_6143161368' by Thread_submittter_004
+Queue sizes: problems_to_submit = 967, answers_to_write = 84
+  successfully finished writing data to file
+start problem b'zz_5657910150' by Thread_submittter_001
+Queue sizes: problems_to_submit = 966, answers_to_write = 85
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_6123521862' by Thread_submittter_003
+Queue sizes: problems_to_submit = 965, answers_to_write = 87
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_6284851367' by Thread_submittter_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_2423297832' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 963, answers_to_write = 89
+  successfully finished writing data to file
+start problem b'zz_2938901337' by Thread_submittter_004
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_1678567262' by Thread_submittter_001
+Queue sizes: problems_to_submit = 961, answers_to_write = 93
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_4163236696' by Thread_submittter_003
+     timing works out
+Queue sizes: problems_to_submit = 960, answers_to_write = 96
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+start problem b'zz_7173571202' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 959, answers_to_write = 97
+  successfully finished writing data to file
+start problem b'zz_6887912691' by Thread_submittter_000
+     timing works out
+  successfully finished writing data to file
+start problem b'zz_7563440092' by Thread_submittter_004
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 957, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8731109573' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 956, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 956, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8953051720' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4314786704' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 954, answers_to_write = 100
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 954, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2276620581' by Thread_submittter_000
+Queue sizes: problems_to_submit = 953, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7745614871' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 952, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 952, answers_to_write = 100
+Queue sizes: problems_to_submit = 952, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5186946684' by Thread_submittter_001
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 951, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9629174827' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1543873445' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2667017035' by Thread_submittter_000
+Queue sizes: problems_to_submit = 948, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 948, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 948, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 948, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 948, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4416366811' by Thread_submittter_004
+Queue sizes: problems_to_submit = 947, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5699783308' by Thread_submittter_001
+Queue sizes: problems_to_submit = 946, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 946, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6777672644' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4696561873' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 944, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1216804702' by Thread_submittter_000
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 943, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1991729797' by Thread_submittter_004
+Queue sizes: problems_to_submit = 942, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 942, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 942, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 942, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7319083102' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4529322445' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6134714654' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 939, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 939, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1869891290' by Thread_submittter_000
+     timing works out
+Queue sizes: problems_to_submit = 938, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9752819950' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 937, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 937, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 937, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4356647384' by Thread_submittter_002
+Queue sizes: problems_to_submit = 936, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8877894209' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0308906613' by Thread_submittter_003
+Queue sizes: problems_to_submit = 934, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0032653739' by Thread_submittter_000
+Queue sizes: problems_to_submit = 933, answers_to_write = 100
+Queue sizes: problems_to_submit = 933, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5740566574' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 932, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 932, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 932, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9639649342' by Thread_submittter_001
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5253267225' by Thread_submittter_002
+Queue sizes: problems_to_submit = 930, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 930, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 930, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 930, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 930, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1826084899' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8865000011' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9534922698' by Thread_submittter_004
+Queue sizes: problems_to_submit = 927, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6815196639' by Thread_submittter_002
+Queue sizes: problems_to_submit = 926, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3053436121' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 925, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 925, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 925, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2958197633' by Thread_submittter_000
+Queue sizes: problems_to_submit = 924, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 924, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1896528815' by Thread_submittter_003
+Queue sizes: problems_to_submit = 923, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6788442422' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2585529473' by Thread_submittter_002
+Queue sizes: problems_to_submit = 921, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8033202374' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 920, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 920, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 920, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7534564483' by Thread_submittter_000
+Queue sizes: problems_to_submit = 919, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9733838603' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 918, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 918, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6607064400' by Thread_submittter_004
+Queue sizes: problems_to_submit = 917, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0750587820' by Thread_submittter_002
+     timing works out
+Queue sizes: problems_to_submit = 916, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0314980529' by Thread_submittter_001
+Queue sizes: problems_to_submit = 915, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 915, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 915, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 915, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1609246854' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6015106980' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7311831418' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5782357928' by Thread_submittter_002
+Queue sizes: problems_to_submit = 911, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 911, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9029058486' by Thread_submittter_001
+Queue sizes: problems_to_submit = 910, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 910, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 910, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 910, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 910, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0049164268' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7245414724' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0049935415' by Thread_submittter_002
+Queue sizes: problems_to_submit = 907, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6868261511' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 906, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7119548564' by Thread_submittter_001
+Queue sizes: problems_to_submit = 905, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 905, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6844447343' by Thread_submittter_000
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 904, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1572370431' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 903, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3189146518' by Thread_submittter_004
+Queue sizes: problems_to_submit = 902, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 902, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0955056976' by Thread_submittter_003
+Queue sizes: problems_to_submit = 901, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9435705886' by Thread_submittter_001
+  successfully finished writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 900, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2501428007' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9827263141' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 898, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 898, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 898, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 898, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 898, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0746450100' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8729137451' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2221764229' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6198002712' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 894, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1090906038' by Thread_submittter_000
+Queue sizes: problems_to_submit = 893, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 893, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 893, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 893, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8164316728' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 892, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8603045523' by Thread_submittter_003
+Queue sizes: problems_to_submit = 891, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9707676017' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8482127309' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0016810938' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 888, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 888, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 888, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 888, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1531033188' by Thread_submittter_004
+Queue sizes: problems_to_submit = 887, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6073209530' by Thread_submittter_003
+Queue sizes: problems_to_submit = 886, answers_to_write = 100
+Queue sizes: problems_to_submit = 886, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1588186220' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3045027862' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4329010718' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 883, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 883, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 883, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 883, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9461685023' by Thread_submittter_003
+Queue sizes: problems_to_submit = 882, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1021785761' by Thread_submittter_004
+Queue sizes: problems_to_submit = 881, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5340987541' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1440182154' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7162335833' by Thread_submittter_002
+Queue sizes: problems_to_submit = 878, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 878, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 878, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1757126335' by Thread_submittter_003
+Queue sizes: problems_to_submit = 877, answers_to_write = 99
+  successfully finished writing data to file
+start problem b'zz_1423858129' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 876, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0499826222' by Thread_submittter_001
+Queue sizes: problems_to_submit = 875, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 875, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 875, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9946992976' by Thread_submittter_002
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 874, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8530677529' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9658118077' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4183224405' by Thread_submittter_004
+Queue sizes: problems_to_submit = 871, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 871, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 871, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 871, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3563310291' by Thread_submittter_001
+Queue sizes: problems_to_submit = 870, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1215430905' by Thread_submittter_002
+Queue sizes: problems_to_submit = 869, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3849725195' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5092509593' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0002224988' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 866, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 866, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 866, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 866, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5866358104' by Thread_submittter_001
+     timing works out
+Queue sizes: problems_to_submit = 865, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5049541458' by Thread_submittter_002
+Queue sizes: problems_to_submit = 864, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6290889951' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4933404156' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9196475172' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 861, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 861, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 861, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 861, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3855470197' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 860, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5921882589' by Thread_submittter_002
+Queue sizes: problems_to_submit = 859, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3529190395' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3295424724' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2258082860' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 856, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 856, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 856, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 856, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6278426025' by Thread_submittter_001
+Queue sizes: problems_to_submit = 855, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 855, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7822235929' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5581374283' by Thread_submittter_000
+Queue sizes: problems_to_submit = 853, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5333136569' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 852, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4539281272' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 851, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 851, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 851, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8076944323' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9181345592' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0319377495' by Thread_submittter_000
+Queue sizes: problems_to_submit = 848, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3600149412' by Thread_submittter_003
+Queue sizes: problems_to_submit = 847, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8067067447' by Thread_submittter_004
+Queue sizes: problems_to_submit = 846, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 846, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 846, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_6196185627' by Thread_submittter_002
+Queue sizes: problems_to_submit = 845, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 845, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9673318566' by Thread_submittter_000
+Queue sizes: problems_to_submit = 844, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9511914460' by Thread_submittter_001
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 843, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4069155037' by Thread_submittter_004
+Queue sizes: problems_to_submit = 842, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3769413594' by Thread_submittter_003
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4581984292' by Thread_submittter_002
+Queue sizes: problems_to_submit = 840, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 840, answers_to_write = 100
+Queue sizes: problems_to_submit = 840, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 840, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4450730596' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7716169511' by Thread_submittter_000
+Queue sizes: problems_to_submit = 838, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6763324829' by Thread_submittter_004
+Queue sizes: problems_to_submit = 837, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4455646584' by Thread_submittter_002
+Queue sizes: problems_to_submit = 836, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7133759175' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 835, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 835, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_4242976369' by Thread_submittter_000
+Queue sizes: problems_to_submit = 834, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2914785812' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 833, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 833, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8392994847' by Thread_submittter_001
+Queue sizes: problems_to_submit = 832, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 832, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5882984789' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6881742118' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6351700082' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 829, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 829, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 829, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2002149063' by Thread_submittter_002
+Queue sizes: problems_to_submit = 828, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 828, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7629195190' by Thread_submittter_001
+     timing works out
+Queue sizes: problems_to_submit = 827, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2574207900' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4809105257' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4067674932' by Thread_submittter_004
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 824, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 824, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 824, answers_to_write = 99
+  successfully finished writing data to file
+start problem b'zz_4223548389' by Thread_submittter_001
+Queue sizes: problems_to_submit = 823, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 823, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6459045482' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7817512134' by Thread_submittter_000
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 821, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4349481369' by Thread_submittter_004
+Queue sizes: problems_to_submit = 820, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6573825606' by Thread_submittter_003
+Queue sizes: problems_to_submit = 819, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5014999593' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 818, answers_to_write = 100
+Queue sizes: problems_to_submit = 818, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 818, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3484633633' by Thread_submittter_004
+  successfully finished writing data to file
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 817, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7533259272' by Thread_submittter_000
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 816, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3798275373' by Thread_submittter_002
+Queue sizes: problems_to_submit = 815, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3494042148' by Thread_submittter_003
+Queue sizes: problems_to_submit = 814, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6245556141' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 813, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 813, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0288723750' by Thread_submittter_000
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 812, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6000716566' by Thread_submittter_004
+Queue sizes: problems_to_submit = 811, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 811, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 811, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3401887665' by Thread_submittter_002
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 810, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9949916706' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6412841137' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0956245527' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 807, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 807, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 807, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 807, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2024792488' by Thread_submittter_004
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 806, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1466018013' by Thread_submittter_002
+Queue sizes: problems_to_submit = 805, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1973298384' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3007582116' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0679191531' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 802, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 802, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 802, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 802, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8557145938' by Thread_submittter_002
+Queue sizes: problems_to_submit = 801, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8436153695' by Thread_submittter_004
+Queue sizes: problems_to_submit = 800, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6459180260' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6892976753' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3339925938' by Thread_submittter_000
+Queue sizes: problems_to_submit = 797, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 797, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 797, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 797, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7442866038' by Thread_submittter_002
+Queue sizes: problems_to_submit = 796, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 796, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0753484054' by Thread_submittter_004
+     timing works out
+Queue sizes: problems_to_submit = 795, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6334899082' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9289410214' by Thread_submittter_001
+Queue sizes: problems_to_submit = 793, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0620039872' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 792, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 792, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8334438104' by Thread_submittter_004
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 791, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9409026452' by Thread_submittter_002
+Queue sizes: problems_to_submit = 790, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 790, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3442195308' by Thread_submittter_001
+Queue sizes: problems_to_submit = 789, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 789, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1641711824' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0104536351' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2137991799' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 786, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 786, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 786, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 786, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2960600601' by Thread_submittter_002
+Queue sizes: problems_to_submit = 785, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5476809120' by Thread_submittter_001
+Queue sizes: problems_to_submit = 784, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6384281023' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7457430511' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0375293781' by Thread_submittter_000
+Queue sizes: problems_to_submit = 781, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 781, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 781, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1984734773' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 780, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1379359616' by Thread_submittter_001
+Queue sizes: problems_to_submit = 779, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 779, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 779, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4592278275' by Thread_submittter_003
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 778, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0677650564' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7020817329' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0400637735' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 775, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 775, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 775, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 775, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3018384520' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 774, answers_to_write = 100
+Queue sizes: problems_to_submit = 774, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7163771226' by Thread_submittter_003
+Queue sizes: problems_to_submit = 773, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2812592312' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6624473266' by Thread_submittter_000
+Queue sizes: problems_to_submit = 771, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0285682996' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 770, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 770, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_5276681256' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 769, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8356879896' by Thread_submittter_000
+Queue sizes: problems_to_submit = 768, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 768, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 768, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3621312102' by Thread_submittter_004
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 767, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9208572566' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4810790309' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4486983849' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 764, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 764, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 764, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 764, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6670566401' by Thread_submittter_000
+Queue sizes: problems_to_submit = 763, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5006785401' by Thread_submittter_004
+Queue sizes: problems_to_submit = 762, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6013591605' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4835288045' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1530660470' by Thread_submittter_003
+Queue sizes: problems_to_submit = 759, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 759, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 759, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_5805124776' by Thread_submittter_000
+Queue sizes: problems_to_submit = 758, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 758, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 758, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4305219454' by Thread_submittter_004
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 757, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0110774466' by Thread_submittter_002
+Queue sizes: problems_to_submit = 756, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6954865252' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3121722261' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1420652109' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 753, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 753, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 753, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 753, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5081280058' by Thread_submittter_002
+Queue sizes: problems_to_submit = 752, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3601452226' by Thread_submittter_004
+Queue sizes: problems_to_submit = 751, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5892498749' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3452231992' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9916588587' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 748, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 748, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 748, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 748, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2873245384' by Thread_submittter_002
+Queue sizes: problems_to_submit = 747, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 747, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9399720435' by Thread_submittter_004
+     timing works out
+Queue sizes: problems_to_submit = 746, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0391639529' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2801933060' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4984271628' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 743, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 743, answers_to_write = 100
+Queue sizes: problems_to_submit = 743, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 743, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2901503308' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 742, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8101097837' by Thread_submittter_004
+Queue sizes: problems_to_submit = 741, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8950825614' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0944781765' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5773747749' by Thread_submittter_000
+Queue sizes: problems_to_submit = 738, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 738, answers_to_write = 100
+Queue sizes: problems_to_submit = 738, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_1611514941' by Thread_submittter_003
+Queue sizes: problems_to_submit = 737, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1113511137' by Thread_submittter_002
+Queue sizes: problems_to_submit = 736, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 736, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 736, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7126165912' by Thread_submittter_004
+Queue sizes: problems_to_submit = 735, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4116303055' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8681287957' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8999082511' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 732, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 732, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 732, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 732, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 732, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6197550343' by Thread_submittter_002
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 731, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3813862325' by Thread_submittter_004
+Queue sizes: problems_to_submit = 730, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1025432461' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2883592327' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1023319303' by Thread_submittter_000
+Queue sizes: problems_to_submit = 727, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 727, answers_to_write = 100
+Queue sizes: problems_to_submit = 727, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_0376749122' by Thread_submittter_004
+Queue sizes: problems_to_submit = 726, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 726, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 726, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8634214867' by Thread_submittter_002
+Queue sizes: problems_to_submit = 725, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3579170547' by Thread_submittter_000
+Queue sizes: problems_to_submit = 724, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0539812972' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0144897977' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5472761154' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 721, answers_to_write = 99
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 721, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 721, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 721, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 721, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1919942931' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 720, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2955149448' by Thread_submittter_000
+Queue sizes: problems_to_submit = 719, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4912470893' by Thread_submittter_001
+Queue sizes: problems_to_submit = 718, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0537413399' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1404051815' by Thread_submittter_004
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 716, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 716, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3294345136' by Thread_submittter_002
+Queue sizes: problems_to_submit = 715, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 715, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2658639752' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 714, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 714, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1022355802' by Thread_submittter_000
+Queue sizes: problems_to_submit = 713, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2907511824' by Thread_submittter_001
+Queue sizes: problems_to_submit = 712, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2280228691' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6933649673' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 710, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 710, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 710, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 710, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3214448222' by Thread_submittter_003
+Queue sizes: problems_to_submit = 709, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1024743167' by Thread_submittter_000
+Queue sizes: problems_to_submit = 708, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0165922807' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9943550952' by Thread_submittter_004
+Queue sizes: problems_to_submit = 706, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4276650236' by Thread_submittter_001
+Queue sizes: problems_to_submit = 705, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 705, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6495708362' by Thread_submittter_003
+Queue sizes: problems_to_submit = 704, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 704, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3040780681' by Thread_submittter_000
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 703, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 703, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3087435353' by Thread_submittter_004
+Queue sizes: problems_to_submit = 702, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5563518318' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4303032078' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3043136251' by Thread_submittter_003
+Queue sizes: problems_to_submit = 699, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 699, answers_to_write = 99
+Queue sizes: problems_to_submit = 699, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 699, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 699, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 699, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8065247935' by Thread_submittter_000
+Queue sizes: problems_to_submit = 698, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6665593007' by Thread_submittter_004
+Queue sizes: problems_to_submit = 697, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 697, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8166901927' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0411527036' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7757279065' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 694, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 694, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 694, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 694, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 694, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8843073655' by Thread_submittter_000
+Queue sizes: problems_to_submit = 693, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 693, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 692, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1352966999' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4216890540' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4572988165' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 689, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 689, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 689, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 689, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 689, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9538944432' by Thread_submittter_000
+Queue sizes: problems_to_submit = 688, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9875316693' by Thread_submittter_004
+Queue sizes: problems_to_submit = 687, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 687, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6032814278' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6700791176' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7250098235' by Thread_submittter_001
+Queue sizes: problems_to_submit = 684, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 684, answers_to_write = 100
+Queue sizes: problems_to_submit = 684, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 684, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2421140234' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7776831481' by Thread_submittter_003
+Queue sizes: problems_to_submit = 682, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 682, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3935969172' by Thread_submittter_000
+Queue sizes: problems_to_submit = 681, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1107499650' by Thread_submittter_001
+Queue sizes: problems_to_submit = 680, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1026528230' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 679, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 679, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1989452960' by Thread_submittter_003
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 678, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3695464474' by Thread_submittter_004
+Queue sizes: problems_to_submit = 677, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2824572227' by Thread_submittter_000
+Queue sizes: problems_to_submit = 676, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 676, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8096893196' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9295207980' by Thread_submittter_002
+Queue sizes: problems_to_submit = 674, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 674, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2326709974' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 673, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0976082790' by Thread_submittter_004
+Queue sizes: problems_to_submit = 672, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 672, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+                                                   À0uostart problem b'zz_5991767337' by Thread_submittter_001
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 671, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 671, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7743663002' by Thread_submittter_002
+Queue sizes: problems_to_submit = 670, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4022604597' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7735152900' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8360714610' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 667, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 667, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 667, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 667, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5691858599' by Thread_submittter_001
+Queue sizes: problems_to_submit = 666, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 666, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1480489878' by Thread_submittter_002
+     timing works out
+Queue sizes: problems_to_submit = 665, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8088614451' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7620414274' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4743884339' by Thread_submittter_004
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 662, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 662, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 662, answers_to_write = 99
+  successfully finished writing data to file
+start problem b'zz_1073480189' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 661, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2063368336' by Thread_submittter_000
+     timing works out
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 660, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 660, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 660, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7597117275' by Thread_submittter_004
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8229433366' by Thread_submittter_002
+Queue sizes: problems_to_submit = 658, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1640695663' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9253227713' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0422423630' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 655, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5724446585' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2449482756' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0400222019' by Thread_submittter_003
+Queue sizes: problems_to_submit = 652, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 652, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4201761825' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9802326732' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 650, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 650, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 650, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 650, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8098119619' by Thread_submittter_004
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 649, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9742192185' by Thread_submittter_003
+     timing works out
+Queue sizes: problems_to_submit = 648, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2471070139' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0983847319' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2123006150' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 645, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 645, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 645, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 645, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 645, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0398185558' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 644, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5453045121' by Thread_submittter_004
+Queue sizes: problems_to_submit = 643, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7918944592' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5760965407' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3113813609' by Thread_submittter_000
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 640, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 640, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 640, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 640, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 640, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7231022256' by Thread_submittter_003
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 639, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6415812399' by Thread_submittter_004
+Queue sizes: problems_to_submit = 638, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 638, answers_to_write = 100
+Queue sizes: problems_to_submit = 638, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0801385712' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7234858264' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9595878702' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 635, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 635, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 635, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 635, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 635, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5716361007' by Thread_submittter_004
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 634, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9548878175' by Thread_submittter_003
+Queue sizes: problems_to_submit = 633, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1059480634' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6102589815' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3482466382' by Thread_submittter_000
+Queue sizes: problems_to_submit = 630, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 630, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 630, answers_to_write = 100
+Queue sizes: problems_to_submit = 630, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 630, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3047333224' by Thread_submittter_004
+Queue sizes: problems_to_submit = 629, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1869474162' by Thread_submittter_003
+Queue sizes: problems_to_submit = 628, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 628, answers_to_write = 99
+start problem b'zz_9533135989' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1071322745' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6087940871' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 625, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 625, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 625, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 625, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2174599972' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6700569885' by Thread_submittter_003
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 623, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3660455769' by Thread_submittter_000
+Queue sizes: problems_to_submit = 622, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3647708759' by Thread_submittter_002
+Queue sizes: problems_to_submit = 621, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6631350817' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 620, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 620, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 620, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9768881250' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4290325084' by Thread_submittter_003
+Queue sizes: problems_to_submit = 618, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 618, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0238413107' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4302893300' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 616, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 616, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 616, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7405524914' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5119319071' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 614, answers_to_write = 98
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 614, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2700757155' by Thread_submittter_003
+Queue sizes: problems_to_submit = 613, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 613, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3342212302' by Thread_submittter_000
+Queue sizes: problems_to_submit = 612, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9069321554' by Thread_submittter_002
+Queue sizes: problems_to_submit = 611, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 611, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1981469342' by Thread_submittter_001
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7275670776' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 609, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 609, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 609, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7516780169' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2734064282' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_4742021186' by Thread_submittter_002
+Queue sizes: problems_to_submit = 606, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 606, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 606, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 606, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5520523035' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 605, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3453825807' by Thread_submittter_004
+Queue sizes: problems_to_submit = 604, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7604959135' by Thread_submittter_000
+Queue sizes: problems_to_submit = 603, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1122356604' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4902090691' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 601, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 601, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 601, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 601, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6869519013' by Thread_submittter_001
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 600, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7374844607' by Thread_submittter_004
+Queue sizes: problems_to_submit = 599, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 599, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4393869313' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8752754648' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3353478822' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 596, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 596, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 596, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 596, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3757109906' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 595, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4888821719' by Thread_submittter_004
+Queue sizes: problems_to_submit = 594, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2678059650' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1546494249' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8465960868' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 591, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 591, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 591, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 591, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0029931985' by Thread_submittter_001
+Queue sizes: problems_to_submit = 590, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6904003745' by Thread_submittter_004
+Queue sizes: problems_to_submit = 589, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7400664087' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2067249993' by Thread_submittter_003
+Queue sizes: problems_to_submit = 587, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3323010966' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 586, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 586, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 586, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 586, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1996585226' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 585, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9623280744' by Thread_submittter_004
+Queue sizes: problems_to_submit = 584, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8680109755' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1148307353' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0221521629' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 581, answers_to_write = 99
+Queue sizes: problems_to_submit = 581, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 581, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 581, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 581, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 581, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6794757122' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 580, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6961684111' by Thread_submittter_004
+Queue sizes: problems_to_submit = 579, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9130943663' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5147772287' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3258555214' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 576, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 576, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 576, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 576, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2720213785' by Thread_submittter_001
+Queue sizes: problems_to_submit = 575, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 575, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7120120794' by Thread_submittter_004
+Queue sizes: problems_to_submit = 574, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5591379708' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9148932242' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4831510995' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 571, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 571, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 571, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 571, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6702993359' by Thread_submittter_001
+Queue sizes: problems_to_submit = 570, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7015902610' by Thread_submittter_004
+Queue sizes: problems_to_submit = 569, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 569, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5754963240' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5159421924' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9859390926' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 566, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 566, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 566, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 566, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5138348522' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 565, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6152386814' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0156974751' by Thread_submittter_002
+Queue sizes: problems_to_submit = 563, answers_to_write = 100
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6567598988' by Thread_submittter_000
+Queue sizes: problems_to_submit = 562, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1032903833' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 561, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 561, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2157686738' by Thread_submittter_001
+Queue sizes: problems_to_submit = 560, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9816497656' by Thread_submittter_004
+Queue sizes: problems_to_submit = 559, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 559, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 559, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2722927882' by Thread_submittter_002
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 558, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8827131320' by Thread_submittter_000
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3509729793' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6430158656' by Thread_submittter_001
+Queue sizes: problems_to_submit = 555, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 555, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 555, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 555, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4337760289' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4672950403' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 553, answers_to_write = 98
+  successfully finished writing data to file
+start problem b'zz_3157759591' by Thread_submittter_003
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 552, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 552, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8740257141' by Thread_submittter_000
+Queue sizes: problems_to_submit = 551, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 551, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0672423348' by Thread_submittter_001
+Queue sizes: problems_to_submit = 550, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5473321633' by Thread_submittter_004
+Queue sizes: problems_to_submit = 549, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0080288502' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3105479091' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 547, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 547, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 547, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 547, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0092585998' by Thread_submittter_001
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 546, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8706561853' by Thread_submittter_000
+Queue sizes: problems_to_submit = 545, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3430612339' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2175110777' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3418307360' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 542, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 542, answers_to_write = 100
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 542, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 542, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 542, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2085444336' by Thread_submittter_001
+Queue sizes: problems_to_submit = 541, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2669577321' by Thread_submittter_000
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 540, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0043849338' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9862816938' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4574742062' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 537, answers_to_write = 99
+     timing works out
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 537, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 537, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 537, answers_to_write = 100
+Queue sizes: problems_to_submit = 537, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 537, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8582122205' by Thread_submittter_000
+Queue sizes: problems_to_submit = 536, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3744619673' by Thread_submittter_001
+Queue sizes: problems_to_submit = 535, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 535, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4598737811' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1119744560' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_5815691413' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 532, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 532, answers_to_write = 100
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 532, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 532, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_0473282009' by Thread_submittter_000
+     timing works out
+Queue sizes: problems_to_submit = 531, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6379148833' by Thread_submittter_001
+Queue sizes: problems_to_submit = 530, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3440286973' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_2210800854' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8762140610' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 527, answers_to_write = 99
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 527, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 527, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 527, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6135591274' by Thread_submittter_000
+Queue sizes: problems_to_submit = 526, answers_to_write = 100
+     timing works out
+Queue sizes: problems_to_submit = 526, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6792421932' by Thread_submittter_001
+     timing works out
+Queue sizes: problems_to_submit = 525, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9491404265' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_3456918633' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_1335312282' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+     timing works out
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 522, answers_to_write = 100
+     timing works out
+     timing works out
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 522, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 522, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 522, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8550329086' by Thread_submittter_000
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 521, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4093527764' by Thread_submittter_001
+Queue sizes: problems_to_submit = 520, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6276147141' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7584871369' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7352926106' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+Queue sizes: problems_to_submit = 517, answers_to_write = 99
+     timing works out
+     timing works out
+  successfully finished sampling
+  start writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 517, answers_to_write = 100
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 517, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 517, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 517, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9782787717' by Thread_submittter_000
+Queue sizes: problems_to_submit = 516, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4643518684' by Thread_submittter_001
+Queue sizes: problems_to_submit = 515, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_6454557440' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8416829567' by Thread_submittter_002
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_7548246568' by Thread_submittter_004
+Queue sizes: problems_to_submit = 512, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+     timing works out
+     timing works out
+     timing works out
+Queue sizes: problems_to_submit = 512, answers_to_write = 100
+  successfully finished writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 512, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 512, answers_to_write = 100
+  successfully finished writing data to file
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 512, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_8281244956' by Thread_submittter_000
+  successfully finished writing data to file
+     timing works out
+Queue sizes: problems_to_submit = 511, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9244394138' by Thread_submittter_001
+Queue sizes: problems_to_submit = 510, answers_to_write = 100
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9289102390' by Thread_submittter_003
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_9581025541' by Thread_submittter_004
+    Hello! answer is being worked on by Thread_writer_000
+start problem b'zz_4963884733' by Thread_submittter_002
+Queue sizes: problems_to_submit = 507, answers_to_write = 100
+     timing works out
+     timing works out
+     timing works out
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 507, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+Queue sizes: problems_to_submit = 507, answers_to_write = 100
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished sampling
+  start writing data to file
+    Hello! answer is being worked on by Thread_writer_000
+  successfully finished writing data to file
+start problem b'zz_6029833758' by Thread_submittter_000
+  successfully finished writing data to file
+Queue sizes: problems_to_submit = 506, answers_to_write = 100
+  successfully finished writing data to file
+     timing works out
