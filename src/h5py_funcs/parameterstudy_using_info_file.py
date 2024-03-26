@@ -43,13 +43,13 @@ def _current_datetime_as_string(offset=None):
     np_string = np_string.encode('utf-8')
     return np_string
 
-def _ensure_info_file(folder_path_name, info_file_name):
+def _ensure_info_file(folder_path_name, info_file_name, print_prefix=''):
     if os.path.exists(os.path.join(folder_path_name, info_file_name)):
-        print('info-file {} exists in folder {} already. This one will be used'.format(info_file_name, folder_path_name))
+        print(print_prefix + 'info-file {} exists in folder {} already. This one will be used'.format(info_file_name, folder_path_name))
     else:
         try:
             with h5py.File(os.path.join(folder_path_name, info_file_name), 'w-') as f: #w- or x Create file, fail if exists
-                print('Created new info-file {} in folder {}.'.format(info_file_name, folder_path_name))
+                print(print_prefix + 'Created new info-file {} in folder {}.'.format(info_file_name, folder_path_name))
         except:
             raise LookupError('info-file {} does not exist in folder {}, but something went wrong and it could not be created.'.format(info_file_name, folder_path_name))
 
@@ -104,7 +104,7 @@ def update_timestamp_in_info_file(file_name_path, info_set, set_identifier, name
             time.sleep(0.1)
             update_timestamp_in_info_file(file_name_path, info_set, set_identifier, name, timestamp=timestamp)
 
-def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, info_set_name, folder_path_name, info_file_name):
+def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, info_set_name, folder_path_name, info_file_name, print_prefix=''):
     try:
         with h5py.File(os.path.join(folder_path_name, info_file_name), 'r+', track_order=True) as f:
             f.create_group(info_set_name, track_order=True)
@@ -148,7 +148,7 @@ def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, i
         raise LookupError('Info-file {} exists in folder {}, but something went wrong and data could not be written to it.'.format(info_file_name, folder_path_name))
 
 
-def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parametersets_array: np.ndarray=np.array([]), info_set_name: str='parametersets', folder_path_name: str='', info_file_name: str='parameterstudy_info.h5'):
+def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parametersets_array: np.ndarray=np.array([]), info_set_name: str='parametersets', folder_path_name: str='', info_file_name: str='parameterstudy_info.h5', print_prefix=''):
     if len(metadata_dict) == 0:
         raise ValueError('metadata_dict is empty')
     for key, value in metadata_dict.items():
@@ -166,7 +166,7 @@ def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parameterse
         os.makedirs(folder_path_name)
     elif folder_path_name != '' and os.path.exists(folder_path_name):
         if os.path.exists(os.path.join(folder_path_name, info_file_name)):
-            print('Info file exists already. If info_set_name is not already contained this is not an issue. If it is, this function will not overwrite data.')
+            print(print_prefix + 'Info file exists already. If info_set_name is not already contained this is not an issue. If it is, this function will not overwrite data.')
             _tmp_raise = False
             with h5py.File(os.path.join(folder_path_name, info_file_name), 'r') as f:
                 if info_set_name in f.keys():
@@ -175,13 +175,13 @@ def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parameterse
                 raise LookupError('In folder {} info-file {} already exists and contains info set {}. This function does not overwrite data, so sort it out manually.'.format(folder_path_name, info_file_name, info_set_name))
     elif folder_path_name == '':
         raise ValueError('folder_path_name is empty but must be specified')
-    _ensure_info_file(folder_path_name=folder_path_name, info_file_name=info_file_name)
+    _ensure_info_file(folder_path_name=folder_path_name, info_file_name=info_file_name, print_prefix=print_prefix)
     
-    _write_info_to_info_file(metadata_dict=metadata_dict, problem_dict=problem_dict, parametersets_array=parametersets_array, info_set_name=info_set_name, folder_path_name=folder_path_name, info_file_name=info_file_name)
+    _write_info_to_info_file(metadata_dict=metadata_dict, problem_dict=problem_dict, parametersets_array=parametersets_array, info_set_name=info_set_name, folder_path_name=folder_path_name, info_file_name=info_file_name, print_prefix=print_prefix)
 
 
 
-def verify_time_stamps_info_and_data_file(info_file_name_path: str='', data_file_name_path: str=''):
+def verify_time_stamps_info_and_data_file(info_file_name_path: str='', data_file_name_path: str='', print_prefix=''):
     import h5py
     import os
 
@@ -197,14 +197,14 @@ def verify_time_stamps_info_and_data_file(info_file_name_path: str='', data_file
                 if value.attrs['finished'] == 1:
                     #print('finishd', key, value[...])
                     if key not in f_data['sampleset'].keys():
-                        print('!!!!!!    not found in sampleset')
+                        print(print_prefix + '!!!!!!    {} not found in data-file but status is finished in info-file'.format(key))
                         _return_val = False
                 else:
                     if key in f_data['sampleset'].keys():
-                        print('!!!!!!    not finished but found in sampleset')
+                        print('!!!!!!    {} found in data-file but status is not finished in info-file'.format(key))
                         _return_val = False
     except Exception as e:
-        print(e)
+        print(print_prefix + str(e))
         _return_val = False
     
     return _return_val
