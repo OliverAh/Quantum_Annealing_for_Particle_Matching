@@ -7,6 +7,7 @@ import dwave.system
 import h5py
 import numpy as np
 import os
+import traceback
 
 import sys
 import pathlib
@@ -51,7 +52,7 @@ class Multithread_Variationstudy:
         self.data_folder_path = None
         self.info_file_name = None
         self.data_file_name = None
-
+        self.folder_path_main = None
         # Create the queues for the problems to submit and the answers to write.
         self._queue_problems_to_submit = queue.Queue() 
         self._queue_answers_to_write = queue.Queue(maxsize=self._max_waiting_answers)
@@ -64,7 +65,9 @@ class Multithread_Variationstudy:
         self._event_flag_writers_should_work = threading.Event()
         self._barrier_submitters = threading.Barrier(parties=self.num_threads_submitters, action=self._event_flag_submitters_should_work.clear, timeout=None)
         self._barrier_writers = threading.Barrier(parties=self.num_threads_writers, action=self._event_flag_writers_should_work.clear, timeout=None)
-        self._lock_multiple_writers = threading.Lock()
+        self._lock_info_file = threading.Lock()
+        self._lock_submitters = threading.Lock()
+        self._lock_writers = threading.Lock()
 
         
     def _submitter(self, verbose=0, print_prefix=''):
@@ -97,18 +100,18 @@ class Multithread_Variationstudy:
 
 
     def _writer(self, verbose=0, print_prefix=''):
-        if self.num_threads_writers != 1:
-            self._event_flag_submitters_should_work.clear()
-            print(print_prefix + f'num_threads_writers must always be 1 (currently {self.num_threads_writers}), because writing to h5py file is not thread safe. \n \
-                  One of the writer threads will try to finish the queue_answers_to_write, but for the sake of your own sanity, fix the number of writer threads to 1. :)')
+        #if self.num_threads_writers != 1:
+        #    self._event_flag_submitters_should_work.clear()
+        #    print(print_prefix + f'num_threads_writers must always be 1 (currently {self.num_threads_writers}), because writing to h5py file is not thread safe. \n \
+        #          One of the writer threads will try to finish the queue_answers_to_write, but for the sake of your own sanity, fix the number of writer threads to 1. :)')
 
-            self._lock_multiple_writers.acquire()
-
-            if self._lock_multiple_writers.locked():
-                pass
-            else:
-                self._barrier_writers.wait()
-                return
+        #    self._lock_multiple_writers.acquire()
+        #
+        #    if self._lock_multiple_writers.locked():
+        #        pass
+        #    else:
+        #        self._barrier_writers.wait()
+        #        return
         mydata_local = threading.local()
         while self._event_flag_writers_should_work.is_set():
             if not self._queue_answers_to_write.empty():
@@ -127,8 +130,6 @@ class Multithread_Variationstudy:
                 time.sleep(0.1)
             elif self._queue_answers_to_write.empty() and not self._event_flag_submitters_should_work.is_set():
                 print(print_prefix + 'writer queue is empty and event_flag_submitters_should_work is not set (all submitters should have finished by now), so writer will also finish.')
-                if self._lock_multiple_writers.locked():
-                    self._lock_multiple_writers.release()
                 self._barrier_writers.wait()
                 del mydata_local
                 return
@@ -225,7 +226,7 @@ class Multithread_Variationstudy:
 
     def _is_sane_input(self, print_prefix=''):
         assert 1 <= self.num_threads_submitters, print_prefix + 'num_threads_submitters must be at least 1.'
-        assert 1 == self.num_threads_writers, print_prefix + 'num_threads_writers must always be 1, because writing to h5py file is not thread safe. Maybe that changes in the future.'
+        #assert 1 == self.num_threads_writers, print_prefix + 'num_threads_writers must always be 1, because writing to h5py file is not thread safe. Maybe that changes in the future.'
         assert dwave.cloud.client.Client.from_config(**self.solver).get_solver().online, print_prefix + 'Could not connect to the solver. Either the solver is offline or the specs are invalid.'
         return True
 

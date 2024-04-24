@@ -16,7 +16,7 @@
 
 import numpy as np
 import scipy as sp
-
+import itertools
 
 #Q
 # converts triangular Q_array to triangular Q_dict
@@ -36,6 +36,34 @@ def Q_convert_to_dict(Q_array):
 
     Q_dict = {keys[i]: values[i] for i in range(len(values))}
     return Q_dict
+
+#Q
+# converts triangular Q_array to triangular Q_dict
+# Q_array MUST NOT be symmetric
+def Q_convert_to_dict_new_keys_iter(Q_array, num_particles: int):
+    assert not ((0 == Q_array - np.transpose(Q_array)).all()), 'Q_array is symmetric'
+    assert isinstance(num_particles, int | np.integer), 'num_particles is not an integer'
+    _tmp = int(np.sqrt(np.shape(Q_array)[0]))
+    assert _tmp == num_particles, 'num_particles is not equal to sqrt of Q_array shape'
+    def _row_col(it,num_particles=num_particles):
+        return (it[0]*num_particles + it[1], it[2]*num_particles + it[3])
+    def value(it, Q_array=Q_array):
+        return Q_array[_row_col(it)]
+    def key(it):
+        return ((it[0]+1, it[1]+1), (it[2]+1, it[3]+1))
+    iterator = itertools.product(range(num_particles), repeat=4)
+    Q_dict = {key(it):value(it) for it in iterator if value(it) != 0}
+    return Q_dict
+
+def reduce_dict_to_nearest_neighbours(Q_dict, distances, num_nearest:int):
+    Q_dict_reduced = Q_dict.copy()
+    assign_to_keep = np.argpartition(distances, num_nearest, axis=1)[:, :num_nearest]
+    tuples_to_keep = tuple((i+1, assign_to_keep[i,j]+1) for j in range(num_nearest) for i in range(np.shape(assign_to_keep)[0]))
+    for k in list(Q_dict.keys()):
+        if k[0] not in tuples_to_keep or k[1] not in tuples_to_keep:
+            del Q_dict_reduced[k]
+
+    return Q_dict_reduced
 
 # converts symmetric Q_array to upper triangular Q_dict
 # Q_array MUST be symmetric

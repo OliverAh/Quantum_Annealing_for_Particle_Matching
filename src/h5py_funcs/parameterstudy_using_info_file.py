@@ -26,13 +26,13 @@ def _explore_np_datetime64():
     print(d)
     print(e)
 
-def _recursicely_write_dict_to_hdf5_group(group, dict_to_write):
+def _recursicely_write_dict_to_hdf5_group(group, dict_to_write, track_order=True):
     for key, value in dict_to_write.items():
         if isinstance(value, dict):
-            subgroup = group.create_group(key)
+            subgroup = group.create_group(key, track_order=True)
             _recursicely_write_dict_to_hdf5_group(group=subgroup, dict_to_write=value)
         else:
-            group.create_dataset(key, data=value)
+            group.create_dataset(key, data=value, track_order=True)
 
 
 def _current_datetime_as_string(offset=None):
@@ -104,51 +104,51 @@ def update_timestamp_in_info_file(file_name_path, info_set, set_identifier, name
             time.sleep(0.1)
             update_timestamp_in_info_file(file_name_path, info_set, set_identifier, name, timestamp=timestamp)
 
-def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, info_set_name, folder_path_name, info_file_name, print_prefix=''):
-    try:
-        with h5py.File(os.path.join(folder_path_name, info_file_name), 'r+', track_order=True) as f:
-            f.create_group(info_set_name, track_order=True)
-            num_parametersets = np.shape(parametersets_array)[0]
-            identifiers = ['zz_0000000000'] * num_parametersets
-            for i, _ in enumerate(identifiers):
-                identifiers[i] = _generate_unused_set_identifier(used_identifiers=identifiers)
-            identifiers = np.array([_id.encode('utf-8') for _id in identifiers])
-            #identifiers = np.array(identifiers)
-            #f_data_2 = [(tuple(samples_salib[i,j] for j in range(np.shape(samples_salib)[1])), ids[i]) for i in range(np.shape(samples_salib)[0])]
-            #f_dtype = [('a', [('aa','f'),('ab','f')],(1,)),# [(key, 'f64') for key in problem_dict['names']
-            #           ('b', 'U10')]
-            params_field_types = [(key, parametersets_array[i].dtype) for i, key in enumerate(problem_dict['names'])]
-            rec_array_dtype = [('sets', params_field_types, (1,)), ('identifiers', identifiers.dtype)]
-            # each row consists of a parameterset for a single run + its unique identifier
-            # the columns can be accesed in two ways: -1 array.sets -> 2d array(num_parametersets, num_parameters)
-            #                                         -2 array.sets.{param_name} -> 1d array(num_parametersets) of specified parameter
-            #                                         -3 array.identifiers -> 1d array(num_parametersets) of unique identifiers
-            #                                         identifiers are not returned by -1 and -2
-            rec_array_data = [(tuple(param_set), identifiers[i])
-                               for i, param_set in enumerate(parametersets_array)]
+def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, info_sets, info_set_name, folder_path_name, info_file_name, print_prefix=''):
+    with h5py.File(os.path.join(folder_path_name, info_file_name), 'r+', track_order=True) as f:
+        for key in info_sets.keys():
+            if key in f.keys():
+                raise LookupError('Info-set {} already exists in info-file {}.'.format(key, info_file_name))
+        f.create_group(info_set_name, track_order=True)
+        _recursicely_write_dict_to_hdf5_group(f[info_set_name], info_sets, track_order=True)
 
-            rec_array = np.rec.fromrecords(rec_array_data, dtype=rec_array_dtype)
-            f[info_set_name].create_dataset(name='study', data = rec_array, track_order=True)
-            for key, value in metadata_dict.items():
-                f[info_set_name].attrs.create(name=key, data=value) # name (String), data – Value of the attribute; will be put through numpy.array(data)., shape=None, dtype=None, shape and dty would overwrite values obtained from data
-            for key, value in problem_dict.items():
-                f[info_set_name].attrs.create(name=key, data=value)
-            f[info_set_name].create_group(name='time_history', track_order=True)
-            for _id in identifiers:
-                f[info_set_name]['time_history'].create_dataset(name=_id, shape=((3,)), dtype=np.array(_current_datetime_as_string()).dtype, track_order=True)
-                f[info_set_name]['time_history'].attrs.create(name='order', data=['creation', 'start sampling', 'finish sampling'])
-                f[info_set_name]['time_history'][_id][0] = np.array(_current_datetime_as_string())
-                f[info_set_name]['time_history'][_id][1] = np.array(_current_datetime_as_string(-1e6))
-                f[info_set_name]['time_history'][_id][2] = np.array(_current_datetime_as_string(-1e6))
-                f[info_set_name]['time_history'][_id].attrs.create(name='ready', data=True)
-                f[info_set_name]['time_history'][_id].attrs.create(name='finished', data=False)
+        num_parametersets = np.shape(parametersets_array)[0]
+        identifiers = ['zz_0000000000'] * num_parametersets
+        for i, _ in enumerate(identifiers):
+            identifiers[i] = _generate_unused_set_identifier(used_identifiers=identifiers)
+        identifiers = np.array([_id.encode('utf-8') for _id in identifiers])
+        #identifiers = np.array(identifiers)
+        #f_data_2 = [(tuple(samples_salib[i,j] for j in range(np.shape(samples_salib)[1])), ids[i]) for i in range(np.shape(samples_salib)[0])]
+        #f_dtype = [('a', [('aa','f'),('ab','f')],(1,)),# [(key, 'f64') for key in problem_dict['names']
+        #           ('b', 'U10')]
+        params_field_types = [(key, parametersets_array[i].dtype) for i, key in enumerate(problem_dict['names'])]
+        rec_array_dtype = [('sets', params_field_types, (1,)), ('identifiers', identifiers.dtype)]
+        # each row consists of a parameterset for a single run + its unique identifier
+        # the columns can be accesed in two ways: -1 array.sets -> 2d array(num_parametersets, num_parameters)
+        #                                         -2 array.sets.{param_name} -> 1d array(num_parametersets) of specified parameter
+        #                                         -3 array.identifiers -> 1d array(num_parametersets) of unique identifiers
+        #                                         identifiers are not returned by -1 and -2
+        rec_array_data = [(tuple(param_set), identifiers[i])
+                           for i, param_set in enumerate(parametersets_array)]
+
+        rec_array = np.rec.fromrecords(rec_array_data, dtype=rec_array_dtype)
+        f[info_set_name].create_dataset(name='study', data = rec_array, track_order=True)
+        for key, value in metadata_dict.items():
+            f[info_set_name].attrs.create(name=key, data=value) # name (String), data – Value of the attribute; will be put through numpy.array(data)., shape=None, dtype=None, shape and dtyp would overwrite values obtained from data
+        for key, value in problem_dict.items():
+            f[info_set_name].attrs.create(name=key, data=value)
+        f[info_set_name].create_group(name='time_history', track_order=True)
+        for _id in identifiers:
+            f[info_set_name]['time_history'].create_dataset(name=_id, shape=((3,)), dtype=np.array(_current_datetime_as_string()).dtype, track_order=True)
+            f[info_set_name]['time_history'].attrs.create(name='order', data=['creation', 'start sampling', 'finish sampling'])
+            f[info_set_name]['time_history'][_id][0] = np.array(_current_datetime_as_string())
+            f[info_set_name]['time_history'][_id][1] = np.array(_current_datetime_as_string(-1e6))
+            f[info_set_name]['time_history'][_id][2] = np.array(_current_datetime_as_string(-1e6))
+            f[info_set_name]['time_history'][_id].attrs.create(name='ready', data=True)
+            f[info_set_name]['time_history'][_id].attrs.create(name='finished', data=False)
             
-                        
-    except:
-        raise LookupError('Info-file {} exists in folder {}, but something went wrong and data could not be written to it.'.format(info_file_name, folder_path_name))
 
-
-def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parametersets_array: np.ndarray=np.array([]), info_set_name: str='parametersets', folder_path_name: str='', info_file_name: str='parameterstudy_info.h5', print_prefix=''):
+def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parametersets_array: np.ndarray=np.array([]), info_sets:dict={}, info_set_name: str='parametersets', folder_path_name: str='', info_file_name: str='parameterstudy_info.h5', print_prefix=''):
     if len(metadata_dict) == 0:
         raise ValueError('metadata_dict is empty')
     for key, value in metadata_dict.items():
@@ -177,7 +177,7 @@ def prepare_info_file(metadata_dict: dict={}, problem_dict: dict={}, parameterse
         raise ValueError('folder_path_name is empty but must be specified')
     _ensure_info_file(folder_path_name=folder_path_name, info_file_name=info_file_name, print_prefix=print_prefix)
     
-    _write_info_to_info_file(metadata_dict=metadata_dict, problem_dict=problem_dict, parametersets_array=parametersets_array, info_set_name=info_set_name, folder_path_name=folder_path_name, info_file_name=info_file_name, print_prefix=print_prefix)
+    _write_info_to_info_file(metadata_dict=metadata_dict, problem_dict=problem_dict, parametersets_array=parametersets_array, info_sets=info_sets, info_set_name=info_set_name, folder_path_name=folder_path_name, info_file_name=info_file_name, print_prefix=print_prefix)
 
 
 

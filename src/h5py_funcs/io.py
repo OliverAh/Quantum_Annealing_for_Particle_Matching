@@ -13,14 +13,14 @@ def _is_set_identifier_in_file_already(file_handle, set_identifier):
 def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str = '', name_suffix: str = '', overwrite_data_in_file=False, track_order=False):
     """ Writes data to a hdf5 file. If the file does not exist, it will be created. 
     If the file exists, the data will be written to it. 
-    If the data already exists in the file, it might or might not be overwritten. 
+    If the data already exists in the file, it might or might not be overwritten, depending on variable (default is not to overwrite). 
     params:
         - file_name_path: str, default ''. Path to the file. If it contains only the file name, it will be saved in the current working directory.
         - dict_data: dict, default {}. Data to be written to the file.
         - data_name: str, default ''. Name of the data to be written to the file. Must be one of ['particles', 'sampler', 'embedding', 'composite', 'sampleset', 'sampleset_sa'].
         - overwrite_data_in_file: bool, default False. If True, the data will be overwritten if the file already exists and it already contains data of the provided data_name.
             If false, the data will not be overwritten and an error will be raised if the file already exists and it already contains data of the provided data_name."""
-    list_valid_data_names = ['particles', 'sampler', 'embedding', 'composite', 'sampleset', 'sampleset_sa']
+    list_valid_data_names = ['particles', 'sampler', 'embedding', 'composite', 'sampleset', 'sampleset_sa', 'custom']
     file_mode = '' # will be adjusted while checking file and settings
     data_name_int = data_name + name_suffix
     # check for valid file_name_path
