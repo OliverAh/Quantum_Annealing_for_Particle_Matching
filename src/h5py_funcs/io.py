@@ -182,10 +182,14 @@ def _read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
         return intermediate_dict
     else:
         return {name: intermediate_dict}
-    
+
 def read_info_from_hdf5_file(file_name_path='', infoset_name: str = ''):
-    """ Reads the info for variation study from a hdf5 file. """
-    if file_name_path[-3:] != '.h5':
+    """ Reads data for variation study from a hdf5 file. To a dict of dicts where each group forms a dict. 
+    Was initially planned for info_file only, but can also be used for sample-data etc. """
+    if not isinstance( file_name_path, str):
+        if str(file_name_path)[-3:] != '.h5':
+            raise ValueError('file_name_path must end with .h5, i.e. must be a hdf5 file')
+    elif file_name_path[-3:] != '.h5':
         raise ValueError('file_name_path must end with .h5, i.e. must be a hdf5 file')
     try: 
         with h5py.File(file_name_path, 'r') as file_handle:

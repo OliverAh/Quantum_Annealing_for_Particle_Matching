@@ -121,8 +121,10 @@ def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, i
         #f_data_2 = [(tuple(samples_salib[i,j] for j in range(np.shape(samples_salib)[1])), ids[i]) for i in range(np.shape(samples_salib)[0])]
         #f_dtype = [('a', [('aa','f'),('ab','f')],(1,)),# [(key, 'f64') for key in problem_dict['names']
         #           ('b', 'U10')]
-        params_field_types = [(key, parametersets_array[i].dtype) for i, key in enumerate(problem_dict['names'])]
-        rec_array_dtype = [('sets', params_field_types, (1,)), ('identifiers', identifiers.dtype)]
+        _tmp_list = problem_dict['names']
+        _tmp_list.append('estimated_runtime')
+        params_field_types = [(key, parametersets_array[i].dtype) for i, key in enumerate(_tmp_list)]
+        rec_array_dtype = [('sets', params_field_types), ('identifiers', identifiers.dtype)]
         # each row consists of a parameterset for a single run + its unique identifier
         # the columns can be accesed in two ways: -1 array.sets -> 2d array(num_parametersets, num_parameters)
         #                                         -2 array.sets.{param_name} -> 1d array(num_parametersets) of specified parameter
@@ -130,7 +132,6 @@ def _write_info_to_info_file(metadata_dict, problem_dict, parametersets_array, i
         #                                         identifiers are not returned by -1 and -2
         rec_array_data = [(tuple(param_set), identifiers[i])
                            for i, param_set in enumerate(parametersets_array)]
-
         rec_array = np.rec.fromrecords(rec_array_data, dtype=rec_array_dtype)
         f[info_set_name].create_dataset(name='study', data = rec_array, track_order=True)
         for key, value in metadata_dict.items():
