@@ -1,6 +1,7 @@
 import h5py
 import os.path
 import numpy as np
+#import multiprocessing # multiprocessing is a hell to fiddle with in Jupyter noteboks inside VS Code, so no imlementation for now 
 
 
 def _is_set_identifier_in_file_already(file_handle, set_identifier):
