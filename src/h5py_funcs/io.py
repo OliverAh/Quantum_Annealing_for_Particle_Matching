@@ -11,7 +11,7 @@ def _is_set_identifier_in_file_already(file_handle, set_identifier):
         return False
     
 
-def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str = '', name_suffix: str = '', overwrite_data_in_file=False, track_order=False):
+def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str = '', name_suffix: str = '', overwrite_data_in_file=False, track_order=False) -> None:
     """ Writes data to a hdf5 file. If the file does not exist, it will be created. 
     If the file exists, the data will be written to it. 
     If the data already exists in the file, it might or might not be overwritten, depending on variable (default is not to overwrite). 
@@ -141,7 +141,7 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
     except:
         raise
 
-def read_embedding_from_hdf5_file(file_name_path='', data_name: str = 'embedding'):
+def read_embedding_from_hdf5_file(file_name_path='', data_name: str = 'embedding') -> dict :
     
     def _to_dict(obj):
         #print(obj)
@@ -164,7 +164,7 @@ def read_embedding_from_hdf5_file(file_name_path='', data_name: str = 'embedding
     except:
         raise ValueError('Could not read embedding from file {}'.format(file_name_path))
     
-def _read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
+def _read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str='') -> dict :
     """ Reads groups and their sub-structures recursively from a hdf5 file."""
 
     intermediate_dict = {}
@@ -184,16 +184,25 @@ def _read_groups_recursively_from_hdf5_object(obj: h5py.Group, name: str=''):
     else:
         return {name: intermediate_dict}
 
-def read_info_from_hdf5_file(file_name_path='', infoset_name: str = ''):
+def read_info_from_hdf5_file(file_name_path='', infoset_name: str = '', driver: str ='') -> dict :
     """ Reads data for variation study from a hdf5 file. To a dict of dicts where each group forms a dict. 
-    Was initially planned for info_file only, but can also be used for sample-data etc. """
+    Was initially planned for info_file only, but can also be used for sample-data etc. 
+    driver='core' reads the whole file into memery and then processes it from there, which is 10%-50% faster, but one needs to keep an eye on memory.
+    See > h5py >> File Objects >> File drivers < for more information."""
     if not isinstance( file_name_path, str):
         if str(file_name_path)[-3:] != '.h5':
             raise ValueError('file_name_path must end with .h5, i.e. must be a hdf5 file')
     elif file_name_path[-3:] != '.h5':
         raise ValueError('file_name_path must end with .h5, i.e. must be a hdf5 file')
-    try: 
-        with h5py.File(file_name_path, 'r') as file_handle:
+    try:
+        if driver == '':
+            driver = None
+        elif isinstance(driver, str) or driver == None:
+            pass
+        else:
+            raise ValueError('driver must be of type str or None')
+
+        with h5py.File(file_name_path, 'r', driver=driver) as file_handle:
             if infoset_name == '':
                 return _read_groups_recursively_from_hdf5_object(file_handle)
             elif infoset_name in file_handle.keys():
