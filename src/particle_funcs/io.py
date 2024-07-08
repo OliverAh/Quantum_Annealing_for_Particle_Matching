@@ -6,7 +6,7 @@ from src.h5py_funcs.io import _read_groups_recursively_from_hdf5_object as read_
 import tqdm
 
 
-def read_dem_data(folder_path:str=''):
+def read_dem_data(folder_path:pathlib.Path|str=''):
     """
     Read DEM data from a folder and return the data as a dict.
 

@@ -18,7 +18,14 @@ keywords = {Particle mixing index, DEM, Characterization method, Comparative stu
 '''
 
 
-import numpy as np
+try:
+    import cupy as np
+    #import numpy as np
+    print('imported cupy')
+    is_cupy = True
+except:
+    print('no cupy available')
+    import numpy as np
 from src.particle_funcs.distance_matrix import calc_phi_ij
 
 
@@ -87,7 +94,11 @@ def calc_lacey_index(coords, species, sample_method='random', sample_count=100, 
         print('Number of, and uniqe species: ', num_species, species_unique)
     
     if sample_method == 'random':
-        sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
+        if is_cupy:
+            import numpy
+            sample_origins_index = np.array(numpy.random.default_rng().choice(numpy.array(range(coords.shape[0])), sample_count))
+        else:
+            sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
     else:
         print('Could not determine sampling method for Lacey index. Currently supported sampling methods: \'random\'.')
     
@@ -99,7 +110,7 @@ def calc_lacey_index(coords, species, sample_method='random', sample_count=100, 
     clustering = np.argpartition(distance_matrix, kth=2, axis=1)
     #print(clustering.shape)
     #print(clustering)
-    clustering = np.where(sample_origins_index[clustering[:,0]] != range(coords.shape[0]), clustering[:,0], clustering[:,1])
+    clustering = np.where(sample_origins_index[clustering[:,0]] != np.array(range(coords.shape[0])), clustering[:,0], clustering[:,1])
     #print(sample_origins_index)
     #print(sample_origins_index[clustering])
 
@@ -135,15 +146,18 @@ def calc_mixing_entropy(coords, species, sample_method='random', sample_count=10
         print('Could not determine mixing entropy method. Currently supported methods: \'combined\'.')
         return None
     if sample_method == 'random':
-        sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
-    
+        if is_cupy:
+            import numpy
+            sample_origins_index = np.array(numpy.random.default_rng().choice(numpy.array(range(coords.shape[0])), sample_count))
+        else:
+            sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
         # Get distance matrix to assign all particles to their closest cluster/cell
         distance_matrix = calc_phi_ij(coords, coords[sample_origins_index], **kwargs_distance_matrix)
         #print(distance_matrix.shape)
 
         # Get indices within distance matrix of the closest clusters for each particle
         clustering = np.argpartition(distance_matrix, kth=2, axis=1)
-        clustering = np.where(sample_origins_index[clustering[:,0]] != range(coords.shape[0]), clustering[:,0], clustering[:,1])
+        clustering = np.where(sample_origins_index[clustering[:,0]] != np.array(range(coords.shape[0])), clustering[:,0], clustering[:,1])
         clusters = []
         for i in range(sample_count):
             clusters.append(np.where(clustering==i)[0])
@@ -201,7 +215,7 @@ def calc_mixing_entropy(coords, species, sample_method='random', sample_count=10
     global_entropy = np.sum(np.multiply(local_entropies, cluster_sizes))
     global_entropy /= coords.shape[0]
     
-    perfectly_mixed_entropy = np.sum([1/len(np.unique(species))*np.log(1/len(np.unique(species))) for i in range(sample_count)])
+    perfectly_mixed_entropy = np.sum(np.array([1/len(np.unique(species))*np.log(1/len(np.unique(species))) for i in range(sample_count)]))
     #print(perfectly_mixed_entropy)
     #print(global_entropy)
 
@@ -237,7 +251,10 @@ def calc_coordination_number_index(coords, species, diameter = 0.0, kwargs_dista
         for j in range(len(unique)):
             n_nb = count[j]
             
-            n_diff = len(np.where(species[np.argpartition(dist_matrix_to_sort[j,:], kth=n_nb+1)[1:n_nb+1]] != species_unique[i])[0])
+            #n_diff = len(np.where(species[np.argpartition(dist_matrix_to_sort[j,:], kth=n_nb+1)[1:n_nb+1]] != species_unique[i])[0])
+            #print(dist_matrix_to_sort[j,:].argpartition(1)[1:n_nb+1])
+            #print(dist_matrix_to_sort[j,:].argpartition(dist_matrix_to_sort.shape[1]-1)[1:n_nb+1])
+            n_diff = len(np.where(species[np.argpartition(dist_matrix_to_sort[j,:], kth=dist_matrix_to_sort.shape[1]-1)[1:n_nb+1]] != species_unique[i])[0])
             M[i] += n_diff/n_nb
     M *= num_species/coords.shape[0] # * num_species is, to achieve a  value of 1 for a perfectly mixed system (0 for a perfectly segregated system)
     
@@ -264,11 +281,15 @@ def calc_particle_scale_index(coords, species, diameter = 0.0, sample_method='ra
     unique, count = np.unique(indices_of_contact[0], return_counts=True)
     C_n = np.zeros(coords.shape[0], dtype=int)
     C_n[unique] = count.astype(int)
-    indices_of_contact_partitioned = np.argpartition(dist_matrix, kth=np.max(C_n), axis=1)
+    #indices_of_contact_partitioned = np.argpartition(dist_matrix, kth=np.max(C_n), axis=1)
+    print('start argpartition')
+    indices_of_contact_partitioned = np.argsort(dist_matrix, axis=1)
+    print('finished argpartition')
     unique_partitioned, count_partitioned = np.unique(indices_of_contact_partitioned, return_counts=True, axis=1)
     
     for i in range(coords.shape[0]):
         for s in range(num_species):
+            print('iteration i,s:', i,s)
             C_nB = len(np.where(species[indices_of_contact_partitioned[i,1:C_n[i]+1]] == species_unique[s])[0]) # for loop over particles can not be avoided because C_n might be different for each particle and therefore we can not index indices_of_contact_partitioned with a 2D array 
             p[i,s] = C_nB/(C_n[i]+1)
     
@@ -287,7 +308,11 @@ def calc_particle_scale_index(coords, species, diameter = 0.0, sample_method='ra
         print('Number of, and uniqe species: ', num_species, species_unique)
     
     if sample_method == 'random':
-        sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
+        if is_cupy:
+            import numpy
+            sample_origins_index = np.array(numpy.random.default_rng().choice(numpy.array(range(coords.shape[0])), sample_count))
+        else:
+            sample_origins_index = np.random.default_rng().choice(range(coords.shape[0]), sample_count)
     else:
         print('Could not determine sampling method for Lacey index. Currently supported sampling methods: \'random\'.')
     

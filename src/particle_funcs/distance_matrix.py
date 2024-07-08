@@ -1,4 +1,12 @@
-import numpy as np
+is_cupy = False
+try:
+    import cupy as np
+    #import numpy as np
+    print('imported cupy')
+    is_cupy = True
+except:
+    print('no cupy available, imported numpy as usual')
+    import numpy as np
 
 
 def calc_phi_ij(coords_n, coords_n_minus_1, type = 'euclidean', sqroot = True, eps=1.0, tanh_percentile=20, tanh_min=0.0): #tanh_percentile=(0,100), tanh_min=(0,inf)
