@@ -11,6 +11,7 @@ import multiprocessing.pool
 import time
 import h5py
 import numpy as np
+import matplotlib
 import matplotlib.cm as cm
 import matplotlib.axes as am
 import matplotlib.pyplot as plt
@@ -342,7 +343,8 @@ def extract_started_sets_from_success_dict(success_dict:dict=None, dict_info_rea
     
     return started_sets, study_matched_started_ids
 
-def generate_sampler_array_for_plots(success_dict:dict=None, results_names:list=[], started_sets:list=[], study_matched_started_ids:np.recarray=None, n_samples_to_compare:int=0, n_exact_sols_to_compare:int=0):
+def generate_sampler_array_for_plots(success_dict:dict=None, results_names:list=[], started_sets:list=[],\
+                                     study_matched_started_ids:np.recarray=None, n_samples_to_compare:int=0, n_exact_sols_to_compare:int=0):
     if success_dict==None:
         raise ValueError('success_dict is required')
     elif results_names==[] or started_sets==[] or not isinstance(study_matched_started_ids,np.recarray) or n_samples_to_compare==0 or n_exact_sols_to_compare==0:
@@ -368,70 +370,184 @@ def generate_sampler_array_for_plots(success_dict:dict=None, results_names:list=
     id_tmp_num = np.argwhere('num_samples_matched' == np.array(results_names))[0,0]
     sampler_array[:,id_tmp_val] = sampler_array[:,id_tmp_num] / sampler_array[:,id_tmp_den]
 
-    return sampler_array
+    return sampler_array, results_names
 
 def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
         , gp_mean:np.ndarray=None, results_names:list=[], dict_info_read:dict=None\
-        , sampler_array:np.ndarray=None, colour_label:str='', dir_name_path_plots:str=''):
+        , sampler_array:np.ndarray=None, colour_label:str='', axs_types:str=['loglog','linlin']\
+        , comb_types:str=['uni','bi'], dir_name_path_plots:str=''\
+        , kwargs_pltrc:dict=None):
+    if gp_mean==None:
+        print('gp_mean == None, no plots associated to gp will be generated')
     if study_name == 'sub_2':
         plot_array = study_matched_started_ids['sets'].view(np.float64)
     else:
         plot_array = study_matched_started_ids['sets'].view((np.float64\
                     , len(study_matched_started_ids['sets'].dtype.names))).copy()
 
-    cmap = plt.colormaps['viridis']
+    if kwargs_pltrc is None:
+        pass
+    else:
+        kl = list(kwargs_pltrc.keys())
+        if 'font_size' in kl: plt.rc('font', size=kwargs_pltrc['font_size'])          # controls default text sizes
+        if 'axes_titlesize' in kl: plt.rc('axes', titlesize=kwargs_pltrc['axes_titlesize'])     # fontsize of the axes title
+        if 'axes_labelsize' in kl: plt.rc('axes', labelsize=kwargs_pltrc['axes_labelsize'])    # fontsize of the x and y labels
+        if 'xtick_labelsize' in kl: plt.rc('xtick', labelsize=kwargs_pltrc['xtick_labelsize'])    # fontsize of the tick labels
+        if 'ytick_labelsize' in kl: plt.rc('ytick', labelsize=kwargs_pltrc['ytick_labelsize'])    # fontsize of the tick labels
+        if 'legend_fontsize' in kl: plt.rc('legend', fontsize=kwargs_pltrc['legend_fontsize'])    # legend fontsize
+        if 'figure_titlesize' in kl: plt.rc('figure', titlesize=kwargs_pltrc['figure_titlesize'])  # fontsize of the figure title
+        if 'marker_scatter' in kl: plt.rc('scatter', marker=kwargs_pltrc['marker_scatter'])   # marker type of scatter plots
 
-    nrows_uni_log = plot_array.shape[1]
-    ncols_uni_log = gp_mean.shape[1]
-    nrows_uni_lin = plot_array.shape[1]
-    ncols_uni_lin = gp_mean.shape[1]
-    nrows_bi_log = plot_array.shape[1]
-    ncols_bi_log = plot_array.shape[1]
-    ncols_bi_lin = plot_array.shape[1]
 
-    fig2, axs2 = plt.subplots(nrows=nrows_uni_log+nrows_uni_lin+nrows_bi_log, ncols=ncols_uni_log \
-                              , figsize=(2.5*ncols_uni_log, 2.5*(nrows_uni_log+nrows_uni_lin+nrows_bi_log))\
-                              , layout='compressed')
+    #cmap = plt.colormaps['viridis']
+    cmap = plt.colormaps['BuGn']
+
+    #nrows_uni_log = plot_array.shape[1]
+    #ncols_uni_log = gp_mean.shape[1] if gp_mean!=None else plot_array.shape[1]
+    #nrows_uni_lin = plot_array.shape[1]
+    #ncols_uni_lin = gp_mean.shape[1] if gp_mean!=None else 0
+    #nrows_bi_log = plot_array.shape[1]
+    #ncols_bi_log = plot_array.shape[1]
+    #ncols_bi_lin = plot_array.shape[1]
+
+    n_cols_in_gp = len(study_matched_started_ids['sets'].dtype.names) if not (gp_mean is None) else 0
+    n_cols_out_gp = gp_mean.shape[1] if not (gp_mean is None) else 0
+    #n_cols_gp = n_cols_in_gp + n_cols_out_gp
+    n_cols_gp = n_cols_out_gp
+    n_rows_gp = n_cols_in_gp
+
+    n_cols_in_sample = len(study_matched_started_ids['sets'].dtype.names)
+    n_cols_out_sample = plot_array.shape[1]
+    n_cols_sample = n_cols_in_sample + n_cols_out_sample
+    n_cols_sample = n_cols_out_sample
+    n_rows_sample = n_cols_sample
+
+    ns_cols_gp = {}
+    ns_rows_gp = {}
+    ns_cols_sample = {}
+    ns_rows_sample = {}
+    for axs in ['loglog','linlin']:
+        for comb in ['uni','bi']:
+            key = axs+'_'+comb
+            if axs in axs_types and comb in comb_types:
+                ns_cols_gp[key] = n_cols_gp
+                ns_rows_gp[key] = n_rows_gp
+                ns_cols_sample[key] = n_cols_sample
+                ns_rows_sample[key] = n_rows_sample
+            else:
+                ns_cols_gp[key] = 0
+                ns_rows_gp[key] = 0
+                ns_cols_sample[key] = 0
+                ns_rows_sample[key] = 0
+    
+
+
+    #fig2, axs2 = plt.subplots(nrows=nrows_uni_log+nrows_uni_lin+nrows_bi_log, ncols=ncols_uni_log \
+    #                          , figsize=(2.5*ncols_uni_log, 2.5*(nrows_uni_log+nrows_uni_lin+nrows_bi_log))\
+    #                          , layout='compressed')
+    
+    print(ns_rows_gp)
+    print(ns_cols_gp)
+    print(ns_rows_sample)
+    print(ns_cols_sample)
+    
+    
+    n_rows = (max(ns_rows_gp.values())+max(ns_rows_sample.values()))*len(comb_types)
+    n_cols = (max(ns_cols_gp.values())+max(ns_cols_sample.values()))*len(axs_types)
+    print(n_rows, n_cols)
+
+    markersize_glob = 75
+    figsize = (19, None)
+    #figaspect = (3*n_cols, 2.5*(n_rows))
+    figaspect = (2.5*n_rows)/(3*n_cols)
+    print('figaspect', figaspect)
+    figsize = (figsize[0], figsize[0]*figaspect)
+    #n_rows = sum(ns_rows_gp.values())+sum(ns_rows_sample.values())
+    #n_cols = max(sum(ns_cols_gp.values()),sum(ns_cols_sample.values()))
+    fig2, axs2 = plt.subplots(nrows=n_rows, ncols=n_cols \
+                              , figsize=figsize\
+                              , layout='constrained') #layout='compressed'
+
 
     print('Figure dimension:', axs2.shape)
-    for row_id in range(nrows_uni_log):
-        for col_id in range(ncols_uni_log):
-            if study_name == 'sub_2': axs2[row_id,col_id].scatter(dict_info_read['study']['data']['sets'].view(np.float64)[:,row_id], gp_mean[:,col_id])
+    print(ns_cols_gp['loglog_bi'])
+    #####
+    # GP loglog_bi
+    #####
+    for row_id in range(ns_rows_gp['loglog_bi']):
+        for col_id in range(ns_cols_gp['loglog_bi']):
+            row_id_plt = row_id + ns_rows_gp['loglog_uni']
+            col_id_plt = col_id + ns_cols_gp['loglog_uni']
+            print(' cols', col_id, col_id_plt, ' rows', row_id, row_id_plt)
+            if study_name == 'sub_2': axs2[row_id_plt,col_id_plt].scatter(dict_info_read['study']['data']['sets'].view(np.float64)[:,row_id], gp_mean[:,col_id]\
+                                                                          , s=markersize_glob)
             #else : axs2[row_id,col_id].scatter(dict_info_read['study']['data']['sets'].view(np.float64, len(dict_info_read['study']['data']['sets'].dtype.names))[:,row_id], gp_mean[:,col_id])
-            else : axs2[row_id,col_id].scatter(dict_info_read['study']['data']['sets'].copy().view((np.float64, len(dict_info_read['study']['data']['sets'].dtype.names)))[:,row_id], gp_mean[:,col_id])
-            axs2[row_id,col_id].set_title(f'{results_names[col_id]} vs.\
+            else : axs2[row_id_plt,col_id_plt].scatter(dict_info_read['study']['data']['sets'].copy().view((np.float64, len(dict_info_read['study']['data']['sets'].dtype.names)))[:,row_id], gp_mean[:,col_id]\
+                                                                          , s=markersize_glob)
+            axs2[row_id_plt,col_id_plt].set_title(f'{results_names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}')
-            axs2[row_id,col_id].set_xscale('log')
-            axs2[row_id,col_id].set_yscale('log')
-
-            if study_name == 'sub_2': axs2[row_id+nrows_uni_log,col_id].scatter(dict_info_read['study']['data']['sets'].view(np.float64)[:,row_id], gp_mean[:,col_id])
-            #else: axs2[row_id+nrows_uni_log,col_id].scatter(dict_info_read['study']['data']['sets'].view(np.float64, len(dict_info_read['study']['data']['sets'].dtype.names))[:,row_id], gp_mean[:,col_id])
-            else: axs2[row_id+nrows_uni_log,col_id].scatter(dict_info_read['study']['data']['sets'].copy().view((np.float64, len(dict_info_read['study']['data']['sets'].dtype.names)))[:,row_id], gp_mean[:,col_id])
-            axs2[row_id+nrows_uni_log,col_id].set_title(f'{results_names[col_id]} vs.\
+            axs2[row_id_plt,col_id_plt].set_xscale('log')
+            axs2[row_id_plt,col_id_plt].set_yscale('log')
+            #if (1 != axs2[row_id_plt,col_id_plt].get_title().count('runtime')) or (2 == axs2[row_id_plt,col_id_plt].get_title().count('readout_thermalization')):
+            #    axs2[row_id_plt,col_id_plt].axis('equal')
+    #####
+    # GP linlin_bi
+    #####
+    for row_id in range(ns_rows_gp['linlin_bi']):
+        for col_id in range(ns_cols_gp['linlin_bi']):
+            row_id_plt = row_id + ns_rows_gp['loglog_uni'] + ns_rows_gp['loglog_bi']
+            col_id_plt = col_id + ns_cols_gp['loglog_uni'] + ns_cols_gp['loglog_bi']
+            if study_name == 'sub_2': axs2[row_id_plt,col_id_plt].scatter(dict_info_read['study']['data']['sets'].view(np.float64)[:,row_id], gp_mean[:,col_id]\
+                                                                          , s=markersize_glob)
+            #else: axs2[row_id_plt,col_id_plt].scatter(dict_info_read['study']['data']['sets'].view(np.float64, len(dict_info_read['study']['data']['sets'].dtype.names))[:,row_id], gp_mean[:,col_id])
+            else: axs2[row_id_plt,col_id_plt].scatter(dict_info_read['study']['data']['sets'].copy().view((np.float64, len(dict_info_read['study']['data']['sets'].dtype.names)))[:,row_id], gp_mean[:,col_id]\
+                                                                          , s=markersize_glob)
+            axs2[row_id_plt,col_id_plt].set_title(f'{results_names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}')
+            #if (1 != axs2[row_id_plt,col_id_plt].get_title().count('runtime')) or (2 == axs2[row_id_plt,col_id_plt].get_title().count('readout_thermalization')):
+            #    axs2[row_id_plt,col_id_plt].axis('equal')
 
     
     colour_id = np.argwhere(colour_label == np.array(results_names))[0,0]
     print('colour_id =', colour_id)
 
-    for row_id in range(nrows_bi_log):
-        for col_id in range(ncols_bi_log):
-            #print(row_id, col_id, ncols_bi_log)
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id].scatter(plot_array[:,row_id], plot_array[:,col_id], \
-                                        c=sampler_array[:,colour_id], cmap=cmap)
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
+    #####
+    # Sample loglog_bi
+    #####
+    for row_id in range(ns_rows_sample['loglog_bi']):
+        for col_id in range(ns_cols_sample['loglog_bi']):
+            row_id_plt = row_id + ns_rows_gp['loglog_uni'] + ns_rows_gp['loglog_bi'] + ns_cols_sample['loglog_uni']
+            col_id_plt = col_id + ns_cols_sample['loglog_uni']
+            print(' cols', col_id, col_id_plt, ' rows', row_id, row_id_plt)
+            axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
+                                        c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            axs2[row_id_plt,col_id_plt].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}\
     ')#\n(c={results_names[colour_id]})')
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id].set_xscale('log')
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id].set_yscale('log')
-            # linear axis scale
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id+ncols_bi_lin].scatter(plot_array[:,row_id], plot_array[:,col_id], \
-                                        c=sampler_array[:,colour_id], cmap=cmap)
-            axs2[row_id+nrows_uni_log+nrows_uni_lin,col_id+ncols_bi_lin].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
+            axs2[row_id_plt,col_id_plt].set_xscale('log')
+            axs2[row_id_plt,col_id_plt].set_yscale('log')
+            #if (1 != axs2[row_id_plt,col_id_plt].get_title().count('runtime')) or (2 == axs2[row_id_plt,col_id_plt].get_title().count('readout_thermalization')):
+            #    axs2[row_id_plt,col_id_plt].axis('equal')
+            
+    #####
+    # Sample linlin_bi
+    #####
+    for row_id in range(ns_rows_sample['linlin_bi']):
+        for col_id in range(ns_cols_sample['linlin_bi']):
+            row_id_plt = row_id + ns_rows_gp['loglog_uni'] + ns_rows_gp['loglog_bi'] + ns_rows_sample['linlin_uni']
+            col_id_plt = col_id + ns_cols_sample['loglog_uni'] + ns_cols_sample['loglog_bi'] + ns_cols_sample['linlin_uni']
+            print(row_id, row_id_plt, col_id, col_id_plt)
+            axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
+                                        c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            axs2[row_id_plt,col_id_plt].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}\
     ')#\n(c={results_names[colour_id]})')
-        axs2[row_id+nrows_uni_log+nrows_uni_lin,-1].axis('off')
+        #axs2[row_id_plt,-1].axis('off')
+            #if (1 != axs2[row_id_plt,col_id_plt].get_title().count('runtime')) or (2 == axs2[row_id_plt,col_id_plt].get_title().count('readout_thermalization')):
+            #    axs2[row_id_plt,col_id_plt].axis('equal')
 
+    #for i in range(axs2[:,-1].shape[0]):
+    #    axs2[i,-1].axis('off')
 
 
 
@@ -447,9 +563,28 @@ def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
 
 
     #fig2.tight_layout() # does not work with colorbar, so instead introduced "layout='compressed'" in figure creation
-    sm = cm.ScalarMappable(norm=plt.Normalize(sampler_array[:,colour_id].min(),sampler_array[:,colour_id].max()),cmap=cmap)
+    #sm = cm.ScalarMappable(norm=plt.Normalize(sampler_array[:,colour_id].min(),sampler_array[:,colour_id].max()),cmap=cmap)
+    sm = cm.ScalarMappable(norm=plt.Normalize(0.0,sampler_array[:,colour_id].max()),cmap=cmap)
     sm.set_array([])
-    fig2.colorbar(sm, ax=axs2[nrows_uni_log+nrows_uni_lin:,-1].ravel().tolist(), label=colour_label)
+    c_label = ''
+    if colour_label == 'fraction_samples_is_found_best':
+        c_label = 'fraction of samples with minimal energy/assignment distance\n'
+    elif colour_label.startswith('fraction_samples_matched'):
+        #fraction_samples_matched_5_samps_3_sols
+        i0 = len('fraction_samples_matched_')
+        i1 = colour_label.find('_samps_')
+        i2 = i1 + len('_samps_')
+        i3 = colour_label.find('_sols')
+        print(i0, i1, i2, i3)
+        m = colour_label[i0:i1]
+        n = colour_label[i2:i3]
+        c_label = f'fraction of samples that are also found in analytic eigenvectors,\nconsidering lowest {m} sampled and {n} analytic energies/assignment distances'
+        c_label = f'fraction of samples,\nfound in {m} lowest sampled and {n} lowest analytical energies'        
+    else:
+        c_label = colour_label
+    fig2.colorbar(sm, ax=axs2[:,-1].ravel().tolist(), label=c_label\
+                  , format=matplotlib.ticker.FormatStrFormatter('%.3f')\
+                  , ticks=np.linspace(sm.get_clim()[0], sm.get_clim()[1], 6))
     fig2.savefig(dir_name_path_plots + f'fig_{study_name}_{results_names[colour_id]}.svg')
     #fig2.savefig(f'./01_out/fig_colorscale_legend.svg')
 

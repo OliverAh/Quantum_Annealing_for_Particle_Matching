@@ -9,6 +9,8 @@
 **/**.gif
 
 
+**/dict_for_df_*
+
 # files larger 100MB
 00_tests/test.h5
 00_tests/test_workflow.h5
