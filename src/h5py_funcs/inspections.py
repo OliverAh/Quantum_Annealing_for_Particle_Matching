@@ -353,11 +353,13 @@ def generate_sampler_array_for_plots(success_dict:dict=None, results_names:list=
     name_fraction_matched = f'fraction_samples_matched_{n_samples_to_compare}_samps_{n_exact_sols_to_compare}_sols'
     results_names.append('fraction_samples_is_found_best')
     results_names.append(name_fraction_matched)
-    print(results_names)
+    #print(results_names)
 
+    ids = []
     sampler_array = np.zeros((len(started_sets),len(results_names)))
     for key, value in success_dict.items():
         id_row = np.argwhere(key.encode('utf-8') == study_matched_started_ids['identifiers'])[0,0]
+        ids.append(key)
         for key2, value2 in value.items():
             if key2 in results_names:
                 id_col = np.argwhere(key2 == np.array(results_names))
@@ -370,7 +372,7 @@ def generate_sampler_array_for_plots(success_dict:dict=None, results_names:list=
     id_tmp_num = np.argwhere('num_samples_matched' == np.array(results_names))[0,0]
     sampler_array[:,id_tmp_val] = sampler_array[:,id_tmp_num] / sampler_array[:,id_tmp_den]
 
-    return sampler_array, results_names
+    return sampler_array, results_names, ids
 
 def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
         , gp_mean:np.ndarray=None, results_names:list=[], dict_info_read:dict=None\
