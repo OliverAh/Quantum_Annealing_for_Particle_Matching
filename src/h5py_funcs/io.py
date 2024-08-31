@@ -1,6 +1,7 @@
 import h5py
 import os.path
 import numpy as np
+import concurrent.futures.thread
 #import multiprocessing # multiprocessing is a hell to fiddle with in Jupyter noteboks inside VS Code, so no imlementation for now 
 
 
@@ -120,8 +121,12 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
                                 file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
                         #elif not isinstance(key, str):
                         #    file_handle_recur[data_name_recur].create_dataset(str(key), data=value)
+                        elif isinstance(value, concurrent.futures.thread.ThreadPoolExecutor):
+                            print('elif concurrent.futures.thread.ThreadPoolExecutor')
+                            print(key_2, type(value), value)
+                            continue
                         else:
-                            #print(type(value))
+                            print(key_2, type(value), value)
                             file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
             
             if data_name == 'embedding':

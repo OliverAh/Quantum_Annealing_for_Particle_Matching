@@ -50,8 +50,9 @@ def read_embeddings(reread_info_file = {}, folder_path_main=''):
     import ast
     embeddings = {}
     for key, file_names in reread_info_file['info']['embs_files']['file_names'].items():
-        #print(key, file_names)
-        for ind, file in enumerate(file_names['data']):
+        print(key, file_names)
+        for ind, file in enumerate((file_names['data'],) if isinstance(file_names['data'], np.bytes_) else file_names['data']):
+            print(ind, file)
             file = file.decode('utf-8')
             file_name_path_emb = os.path.join(folder_path_main,'embeddings', file)
             emb = h5py_funcs.io.read_info_from_hdf5_file(
@@ -228,91 +229,45 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     num_particles = {'01': 5}
     rocky_files = {'01': str(pathlib.Path(r"C:\zz_tmp_OAH\perf_sphere\qdem_sub_1\01_Particles_0005_CPU_4_GPU_0.rocky"))}
     DEMs = {'num_particles': num_particles, 'rocky_files': rocky_files}
-    
+    #embs_files_names = {'file_name_system':file_name_system, 'file_names':embs_files}
     num_nearest_neighbours = {'01': np.array([5])}
 
-    qubos = {}
-    for key, value in num_particles.items():
-        print('creating QUBOs for {} particles and {} nearest neighbours'.format(value, num_nearest_neighbours[key]))
-        folder_path = pathlib.Path(rocky_files[key]+r'.files')
-        print('read DEM files from', folder_path)
-        dem_data = particles_io.read_dem_data(folder_path=folder_path)
-
-        time_values_for_snapshots = (57.5, 60)
-        filenames_for_snapshots = []
-        for key3, value3 in dem_data.items():
-            if key3 not in ('num_particles', 'particle_index'):
-                pass
-            else:
-                continue
-            #print(value['attrs']['time_value'][0])
-            if np.isclose(value3['attrs']['time_value'][0], time_values_for_snapshots).any():
-                print('time index and value from DEM data:', value3['attrs']['time_index'], value3['attrs']['time_value'])
-                filenames_for_snapshots.append(key3)
-        particles_coords_names = dem_data[filenames_for_snapshots[0]]['Particles']['particles_position']['data'].dtype.names
-        print('filenames for coords:', filenames_for_snapshots)
-
-        part_coords_n = dem_data[filenames_for_snapshots[1]]['Particles']['particles_position']['data'].view((np.double, len(particles_coords_names)))
-        part_coords_nm1 = dem_data[filenames_for_snapshots[0]]['Particles']['particles_position']['data'].view((np.double, len(particles_coords_names)))
-        #part_coords_n
-
-        distances = distance_matrix.calc_phi_ij(part_coords_n, part_coords_nm1)
-        #distances
-
-        Q_dist_diag = q_matrix.q_dist_diag(distances)
-        Q_part = q_matrix.q_part(np.shape(distances)[0])
-        Q_pos = q_matrix.q_pos(np.shape(distances)[0])
-        Q_array = Q_dist_diag + Q_part + Q_pos
-        #Q_dict = q_matrix.Q_convert_to_dict(Q_array)
-        #del Q_dict
-        Q_dict_new = q_matrix.Q_convert_to_dict_new_keys_iter(Q_array, value)
-            
-        for value2 in num_nearest_neighbours[key]: 
-            print('Reduce Q-Matrix to {} nearest neighbours'.format(value2))
-            Q_dict_to_store = Q_dict_new.copy()
-            if value != value2:
-                Q_dict_to_store = q_matrix.reduce_dict_to_nearest_neighbours(Q_dict_to_store, distances, value2)
-            Q_dict_to_store = {str(_tmp1): _tmp2 for _tmp1, _tmp2 in Q_dict_to_store.items()}
-            qubos.update({'{:0{w1}n}_{:0{w1}n}'.format(value, value2, w1=len(str(np.max(list(num_particles.values()))))): Q_dict_to_store}) 
-    #print(qubos)
-
-    embs_files = {}
-    for key, value in num_nearest_neighbours.items():
-        files_names = []
-        for i in range(len(value)):
-            files_names.append('emb_{:0{w1}n}_{:0{w1}n}_mm01.h5'.format(num_particles[key], value[i], w1=len(str(np.max(list(num_particles.values()))))))
-        embs_files.update({key: np.array(files_names, dtype='S')})
     file_name_system = np.array('num_particles__nearest_neighbours__embedding_method', dtype='S')
+    embs_files = {'01': np.array('emb_5_5_mm01.h5', dtype='S')}
     embs_files_names = {'file_name_system':file_name_system, 'file_names':embs_files}
-    print(embs_files_names)
-    del key, value
-
-
+    
+    
 
     reread_info_file = read_info_file(os.path.join(folder_path_main, old_info_file_name), infoset_name='')
+    
+    import ast
+    Q_dict = reread_info_file['info']['qubos']['5_5']
+    #Q_dict = {ast.literal_eval(var): qs['data'] for var, qs in Q_dict.items()}
+    Q_dict = {str(var): qs['data'] for var, qs in Q_dict.items()}
+    
+    qubos = {'5_5': Q_dict}
+    #print(qubos)
+    #sys.exit()
+    
+    
     reread_embeddings = read_embeddings(reread_info_file=reread_info_file, folder_path_main=folder_path_main)
     print(reread_embeddings)
     emb = reread_embeddings['emb_5_5_mm01.h5'] # this is a dict in the form {(part i, pos j): [list of quibits]}
 
-    with open('../API_Token_Oliver_Dev.txt') as file:
+    with open('../API_Token_MBD_qdem.txt') as file:
         token = file.readline().rstrip()
     kwargs_dwavesampler = {'token' : token, 'region':'eu-central-1', 'architecture':'pegasus', 'name':'Advantage_system5.4'}
     sampler = DWaveSampler(**kwargs_dwavesampler)
     tmp_not_needed_as_a_variable = sampler.adjacency # required for sampler having all data needed for __getstate__, no idea why this is necessary
 
-    names = ['annealing_time', 'programming_thermalization', 'readout_thermalization']
+    names = ['chain_strength']
     salib_problem = {
-    'num_vars': 3,
+    'num_vars': 1,
     'names': names,
-    'bounds': [sampler.properties['annealing_time_range'],
-               sampler.properties['programming_thermalization_range'],
-               sampler.properties['readout_thermalization_range']]
+    'bounds': [[0.0, 10.0]]
     }
-    salib_problem['bounds'][0][1] *= .5
-    salib_problem['bounds'][1][1] *= .5
-    salib_problem['bounds'][2][1] *= .4
     
-    N = 2**6
+    N = 2**3
     salib_sobol_samples = salib_sample_sobol.sample(salib_problem, N, calc_second_order=True, scramble=True)
     print('N ', N, ', D ', salib_problem['num_vars'])
     print('num samples: N(2D+2) = ', N*(2*salib_problem['num_vars']+2))
@@ -321,16 +276,21 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     print(salib_problem['bounds'])
     print(salib_sobol_samples)
     study = salib_sobol_samples
+    
+    study = np.linspace(start=0.01, stop=10.0, num=1000, endpoint=True)
+    study = np.atleast_2d(study).transpose()
+    print(study.shape)
+    
 
     num_qubits = len(set(inner for outer in emb.values() for inner in outer))
     print('num_qubits:', num_qubits)
     composite_fixed = FixedEmbeddingComposite(sampler, emb)
-    est_time_s = np.zeros((salib_sobol_samples.shape[0], 1))
-    for i in range(salib_sobol_samples.shape[0]):
+    est_time_s = np.zeros((study.shape[0], 1))
+    for i in range(study.shape[0]):
         params_sampling = {'label' : 'superdupernice label',
                   'num_reads': 1000, 
                   'answer_mode': 'raw'}
-        params_sampling.update({names[j]: salib_sobol_samples[i,j] for j in range(salib_sobol_samples.shape[1])})
+        params_sampling.update({names[j]: study[i,j] for j in range(study.shape[1])})
         params_sampling.update({'flux_drift_compensation': False})
         est_time_s[i] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
         est_time_s[i] *= 1e-6
@@ -349,7 +309,7 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     info_sets = {'DEMs':DEMs,
                  'nearest_neighbours':num_nearest_neighbours,
                  'qubos':qubos,
-                'embs_files':embs_files_names}
+                'embs_files': embs_files_names}
     
     h5py_funcs.parameterstudy_using_info_file.prepare_info_file(
         metadata_dict = metadata_dict, 
@@ -360,205 +320,6 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
         folder_path_name = folder_path_main, 
         info_file_name = info_file_name, 
         print_prefix='')
-
-# %%
-def _find_embedding(Q_dict={}, folder_name_embs='', kwargs_sampler={}, file_name_emb='', rocky_analysis_path='', layout_source_required=False):
-
-    if layout_source_required:
-        folder_path = pathlib.Path(rocky_analysis_path)
-        print(folder_path)
-        dem_data = particles_io.read_dem_data(folder_path=folder_path)
-
-        time_values_for_snapshots = (57.5, 60)
-        filenames_for_snapshots = []
-        num_particles = None
-        particles_coords_names = None
-        for key, value in dem_data.items():
-            if key not in ('num_particles', 'particle_index'):
-                pass
-            else:
-                continue
-            #print(value['attrs']['time_value'][0])
-            if np.isclose(value['attrs']['time_value'][0], time_values_for_snapshots).any():
-                print(value['attrs']['time_index'], value['attrs']['time_value'])
-                print(key)
-                filenames_for_snapshots.append(key)
-        num_particles = dem_data['num_particles'].astype(int)
-        particles_coords_names = dem_data[filenames_for_snapshots[0]]['Particles']['particles_position']['data'].dtype.names
-        print(filenames_for_snapshots, num_particles)
-        print(particles_coords_names)
-        print(type(num_particles))
-
-        part_coords_n = dem_data[filenames_for_snapshots[1]]['Particles']['particles_position']['data'].view((np.double, len(particles_coords_names)))
-        part_coords_nm1 = dem_data[filenames_for_snapshots[0]]['Particles']['particles_position']['data'].view((np.double, len(particles_coords_names)))
-        #part_coords_n
-        
-        logic_vars = set(elem[0] for elem in list(Q_dict.keys()))
-        layout_source = {elem:tuple(part_coords_n[elem[0]-1][:2]) for elem in logic_vars}
-        #print(logic_vars)
-        #print(layout_source)
-
-
-    sampler = DWaveSampler(**kwargs_sampler)
-    tmp_not_needed_as_a_variable = sampler.adjacency # required for sampler having all data needed for __getstate__, no idea why this is necessary
-    sampler_graph = sampler.to_networkx_graph()
-
-    sampler_dict = {}
-    _tmp = sampler.client.config.dict().copy()
-    _tmp.update({'token': 'removed_for_privacy'})
-    sampler_dict.update({'client_reduced': _tmp.copy()})
-    #sampler_dict.update({'solver_reduced': 
-    _tmp = sampler.solver.data.copy()
-    for key in list(_tmp['properties'].keys()):
-        if key not in ('num_qubits', 'qubits', 'couplers', 'chip_id', 'tags', 'topology', 'category'):
-            _tmp['properties'].pop(key)
-    sampler_dict.update({'solver_reduced': _tmp.copy()})
-    del _tmp
-
-    
-
-    kwargs_diffusion_candidates = {}
-    #kwargs_diffusion_candidates_01 = {
-    #    'tries':20, 
-    #    'verbose':1,
-    #    'layout':layout_source,
-    #    #'vicinity':3,
-    #    #'viscosity':,
-    #    #'delta_t':,
-    #    #'d_lim':,
-    #    #'downscale':,
-    #    #'keep_ratio':,
-    #    #'expected_occupancy':
-    #    }
-    #kwargs_diffusion_candidates_02 = kwargs_diffusion_candidates_01.copy()
-    #kwargs_diffusion_candidates_02.update({'tries':50})
-    #kwargs_diffusion_candidates = {'mm_01': None, 'mm_02': None, 'em_01':kwargs_diffusion_candidates_01, 'em_02':kwargs_diffusion_candidates_02}
-    kwargs_diffusion_candidates = {}
-    kwargs_minorminer = {}
-    kwargs_minorminer_mm_01 = {
-    #        'max_no_improvement':250,
-    #        #random_seed=None,
-    #        #timeout=1000,
-    #        #max_beta=None,
-    #        'tries':250,
-    #        #inner_rounds=None,
-    #        'chainlength_patience':250,
-    #        #max_fill=None,
-    #        #threads=1,
-    #        #return_overlap=False,
-    #        #skip_initialization=False,
-    #        #verbose=0,
-    #        #interactive=False,
-    #        #initial_chains=(),
-    #        #fixed_chains=(),
-    #        #restrict_chains=(),
-    #        #suspend_chains=(),
-    }
-    #kwargs_minorminer_mm_02 = kwargs_minorminer_mm_01.copy()
-    #kwargs_minorminer_mm_02.update({'max_no_improvement':500, 'tries':500, 'chainlength_patience':500})
-    #kwargs_minorminer = {'mm_01':kwargs_minorminer_mm_01, 'mm_02':kwargs_minorminer_mm_02}
-    kwargs_minorminer = {'mm_01':kwargs_minorminer_mm_01}
-
-    kwargs_embera = {}
-    #kwargs_embera.update({'em_01': None, 'em_02': None})
-
-    timings_candidates = {}
-    timings_embedding = {}
-    #kwargs_wo_layout = kwargs_diffusion_candidates_01.copy()
-    #kwargs_wo_layout.pop('layout')
-    #timings_candidates.update({'mm_01':None, 'mm_02':None, 'em_01':None, 'em_02':None})
-
-
-
-    embeddings = {}
-    for key in kwargs_minorminer.keys():
-        tic = time.time()
-        embedding_mm = minorminer.find_embedding(S=Q_dict, T=sampler_graph, interactive=True, verbose=1, **kwargs_minorminer[key])
-        toc = time.time()
-        timings_embedding[key] = toc-tic
-        embeddings[key] = {'embedding': embedding_mm, 'sampler': sampler_dict, 'qubo': Q_dict}
-    #tic = time.time()
-    #candidates_em_layout = embera.preprocess.diffusion_placer.find_candidates(Q_dict_edgelist, sampler_graph, **kwargs_diffusion_candidates)
-    #toc = time.time()
-    #timings_candidates['em_layout'] = toc-tic
-
-    composites_fixed = {}
-    for key, emb_sam in embeddings.items():
-        sampler = DWaveSampler(**kwargs_sampler)
-        tmp_not_needed_as_a_variable = sampler.adjacency # required for sampler having all data needed for __getstate__, no idea why this is necessary
-        composites_fixed[key] = FixedEmbeddingComposite(sampler, emb_sam['embedding'])
-
-    params_sampling = {'label' : 'superdupernice label',
-              'annealing_time': 20, 
-              'num_reads': 1000, 
-              'answer_mode': 'raw', 
-              'programming_thermalization': 1000, 
-              'readout_thermalization': 0
-              }
-
-    for key, value in composites_fixed.items():
-        emb = value.embedding
-        #print(emb)
-        num_qubits = len(set(inner for outer in emb.values() for inner in outer))
-        estimate_time_ys = value.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
-        print('   {:22s}'.format(key), num_qubits, estimate_time_ys*1e-6)
-
-
-
-    #folder_path = 'test_embeddings'
-    #file_name = 'embeddings'
-    file_name_path = os.path.join(folder_name_embs, file_name_emb)
-
-
-    kwargs_file_writing_meta={'file_name_path': file_name_path,
-                         'overwrite_data_in_file': False,
-                         'track_order': True}
-
-    meta_to_write = {
-            'kwargs_diffusion_candidates': kwargs_diffusion_candidates, 
-            'kwargs_minorminer': kwargs_minorminer,
-            'kwargs_embera': kwargs_embera,
-            'timings_candidates': timings_candidates,
-            'timings_embedding': timings_embedding
-            }
-    h5py_funcs.io.write_to_hdf5_file(dict_data=meta_to_write, data_name='embedding', name_suffix='_00_meta', **kwargs_file_writing_meta)
-
-    for key, emb in embeddings.items():
-        #print(emb)
-        emb_to_write = emb
-        meta_to_write_emb = {key_meta: value_meta[key] for key_meta, value_meta in meta_to_write.items() if key in value_meta}
-        kwargs_file_writing_embs = kwargs_file_writing_meta.copy()
-        #kwargs_file_writing_embs.update({'file_name_path': os.path.join(folder_path, key+'.h5')})
-        h5py_funcs.io.write_to_hdf5_file(dict_data=emb_to_write, data_name='embedding', name_suffix='_'+key, **kwargs_file_writing_embs)
-        h5py_funcs.io.write_to_hdf5_file(dict_data=meta_to_write_emb, data_name='embedding', name_suffix='_'+key+'_meta', **kwargs_file_writing_embs)
-
-    return embeddings
-
-# %%
-def _main_find_embeddings(reread_info_file={}, folder_path_main=''):
-    import ast
-    with open('../API_Token_Oliver_Dev.txt') as file:
-        token = file.readline().rstrip()
-        architecture = file.readline().rstrip()
-    kwargs_sampler = {'token' : token, 'architecture':'pegasus', 'region':'eu-central-1'}
-    max_num_particles = np.max([reread_info_file['info']['DEMs']['num_particles'][key]['data'] for key in reread_info_file['info']['DEMs']['num_particles'].keys()]) 
-    for key, dem in reread_info_file['info']['DEMs']['rocky_files'].items():
-        num_particles = reread_info_file['info']['DEMs']['num_particles'][key]['data']
-        rocky_files_path = dem['data'].decode('utf-8')+r'.files'
-        print('number of particles:', num_particles, 'DEM folder:', rocky_files_path)
-        for ind, nearest_neighbours in enumerate(reread_info_file['info']['nearest_neighbours'][key]['data']):
-            file_name_emb = reread_info_file['info']['embs_files']['file_names'][key]['data'][ind].decode('utf-8')
-            print('number of nearest neighbours:', nearest_neighbours, 'file_name_for_embedding', file_name_emb)
-            qubos_key = '{:0{w1}n}_{:0{w1}n}'.format(num_particles, nearest_neighbours, w1=len(str(max_num_particles)))
-            Q_dict = reread_info_file['info']['qubos'][qubos_key]
-            Q_dict = {ast.literal_eval(var): qs['data'] for var, qs in Q_dict.items()}
-            folder_name_embs = os.path.join(folder_path_main,'embeddings')
-            #print(Q_dict)
-            #assert False
-            _find_embedding(Q_dict=Q_dict, folder_name_embs=folder_name_embs, 
-                            file_name_emb=file_name_emb, kwargs_sampler=kwargs_sampler,
-                            rocky_analysis_path=rocky_files_path, layout_source_required=False)
-    
 
 # %%
 def overloaded_submitter_work(self, problem, verbose=0, print_prefix=''):
@@ -764,12 +525,13 @@ def _main_determine_anneal_offset():
 
 
     import ast
-    with open('../API_Token_Oliver_Dev.txt') as file:
+    with open('../API_Token_MBD_qdem.txt') as file:
         token = file.readline().rstrip()
         architecture = file.readline().rstrip()
     kwargs_sampler = {'token' : token, 'architecture':'pegasus', 'region':'eu-central-1'}
     Q_dict = reread_info_file['info']['qubos']['5_5']
     Q_dict = {ast.literal_eval(var): qs['data'] for var, qs in Q_dict.items()}
+    print(Q_dict)
     #edge_list_source = set(elem[0] for elem in list(Q_dict.keys()))
     #print(edge_list_source)
     folder_name_embs = os.path.join(folder_path_main,'embeddings')
@@ -783,6 +545,40 @@ def _main_determine_anneal_offset():
 
     _main_check_emb(emb=reread_embeddings['emb_5_5_mm01.h5'], source=Q_dict, target=target_graph, print_verify=True, print_diagnose=True)
     
+    lens_chains = []
+    for _var, _qbs in reread_embeddings['emb_5_5_mm01.h5'].items():
+        print(_var, len(_qbs), _qbs)
+        lens_chains.append(len(_qbs))
+    print('num chains', len(lens_chains), 'max chain length', max(lens_chains), 'chain lengths', lens_chains)
+    
+    prop_anneal_offset_ranges = sampler.properties["anneal_offset_ranges"]
+    print('num anneal offset ranges', len(prop_anneal_offset_ranges))
+    min_anneal_offset = np.min([elem[0] for elem in prop_anneal_offset_ranges])
+    max_anneal_offset = np.max([elem[1] for elem in prop_anneal_offset_ranges])
+    print(min_anneal_offset, max_anneal_offset)
+
+    anneal_offsets = [0]*sampler.properties['num_qubits']
+    
+    for _var, _qbs in reread_embeddings['emb_5_5_mm01.h5'].items():
+        len_chain = len(_qbs)
+    
+
+    composite = FixedEmbeddingComposite(child_sampler=sampler, embedding=reread_embeddings['emb_5_5_mm01.h5'])
+    #comp_props = composite.properties['child_properties']
+    #for key, val in comp_props.items():
+    #    print(key)
+    #    if key in ['h_range', 'j_range', 'extended_j_range']:
+    #        print(val)
+    #ans = composite.sample_qubo(Q=Q_dict, num_reads=5, anneal_offset
+    #####
+    ## chain_strength is param that goes into sample_qubo
+    ## ans = composite.sample_qubo(Q=Q_dict, num_reads=5, chain_strength=5.0)
+    ## print(ans.info['embedding_context']['chain_strength'])
+    #####
+
+    print(ans)
+    
+
     sys.exit()
 
 def main():
@@ -850,7 +646,7 @@ def main():
         #kwargs_dwavesampler = {'token': token, 'architecture': 'pegasus', 'region': 'eu-central-1'}
 
 
-    sys.exit()
+    #sys.exit()
 
 
     process_counter = 0
@@ -916,8 +712,13 @@ def main_reset_notfinished_runs_info_file():
 if __name__ == '__main__':
     print('This is the main process')
     #main_reset_notfinished_runs_info_file()
-    #main()
-    _main_determine_anneal_offset()
+    main()
+    #_main_determine_anneal_offset()
+    #_main_update_study_in_info_file(\
+    #    folder_path_main=r'/Users/adam-1aeqn8vhvpjnv4u/mast_sub5/Quantum_Annealing_for_Particle_Matching/00_tests/01_out/sub_5',\
+    #    info_file_name='study_params_sub5.h5',\
+    #    old_info_file_name='study_params_sub4_2.h5')
+    
 
 
 # %%
