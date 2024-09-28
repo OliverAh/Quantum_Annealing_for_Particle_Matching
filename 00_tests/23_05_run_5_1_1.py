@@ -630,7 +630,7 @@ def main():
             sampler_params.update(sp_update)
         #print(sampler_params)
     print(len(list(sampler_params.keys())), 'psets will be executed')
-    sys.exit()
+    #sys.exit()
     
     iterations = len(sampler_params)
     chunk_size = 25
