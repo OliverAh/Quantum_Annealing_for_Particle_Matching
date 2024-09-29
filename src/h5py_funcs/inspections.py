@@ -387,6 +387,15 @@ def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
         plot_array = study_matched_started_ids['sets'].view((np.float64\
                     , len(study_matched_started_ids['sets'].dtype.names))).copy()
 
+    df_plots_1 = pd.DataFrame.from_records(\
+        data=study_matched_started_ids['sets'])
+    df_plots_2 = pd.DataFrame.from_records(\
+        data=sampler_array, columns=results_names)
+    df_plots = df_plots_1.join(df_plots_2)
+    df_plots = df_plots.sort_values(by=colour_label)
+    
+    #return df_plots,(df_plots_1, df_plots_2)
+
     if kwargs_pltrc is None:
         pass
     else:
@@ -521,8 +530,10 @@ def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
             row_id_plt = row_id + ns_rows_gp['loglog_uni'] + ns_rows_gp['loglog_bi'] + ns_cols_sample['loglog_uni']
             col_id_plt = col_id + ns_cols_sample['loglog_uni']
             print(' cols', col_id, col_id_plt, ' rows', row_id, row_id_plt)
-            axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
-                                        c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            #axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
+            #                            c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            axs2[row_id_plt,col_id_plt].scatter(df_plots.iloc[:,row_id], df_plots.iloc[:,col_id], \
+                                        c=df_plots[colour_label], cmap=cmap, s=markersize_glob*df_plots[colour_label]/np.max(df_plots[colour_label].ravel()))
             axs2[row_id_plt,col_id_plt].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}\
     ')#\n(c={results_names[colour_id]})')
@@ -539,8 +550,10 @@ def return_plots(study_name:str='', study_matched_started_ids:np.recarray=None\
             row_id_plt = row_id + ns_rows_gp['loglog_uni'] + ns_rows_gp['loglog_bi'] + ns_rows_sample['linlin_uni']
             col_id_plt = col_id + ns_cols_sample['loglog_uni'] + ns_cols_sample['loglog_bi'] + ns_cols_sample['linlin_uni']
             print(row_id, row_id_plt, col_id, col_id_plt)
-            axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
-                                        c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            #axs2[row_id_plt,col_id_plt].scatter(plot_array[:,row_id], plot_array[:,col_id], \
+            #                            c=sampler_array[:,colour_id], cmap=cmap, s=markersize_glob*sampler_array[:,colour_id]/np.max(sampler_array[:,colour_id].ravel()))
+            axs2[row_id_plt,col_id_plt].scatter(df_plots.iloc[:,row_id], df_plots.iloc[:,col_id], \
+                                        c=df_plots[colour_label], cmap=cmap, s=markersize_glob*df_plots[colour_label]/np.max(df_plots[colour_label].ravel()))
             axs2[row_id_plt,col_id_plt].set_title(f'{dict_info_read['study']['data']['sets'].dtype.names[col_id]} vs.\
     \n{dict_info_read['study']['data']['sets'].dtype.names[row_id]}\
     ')#\n(c={results_names[colour_id]})')
