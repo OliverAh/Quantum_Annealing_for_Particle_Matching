@@ -905,12 +905,12 @@ def main_reset_notfinished_runs_info_file():
 if __name__ == '__main__':
     print('This is the main process')
     #main_reset_notfinished_runs_info_file()
-    #main()
-    _main_update_study_in_info_file(\
-        #folder_path_main=r'/Users/adam-1aeqn8vhvpjnv4u/mast_sub5/Quantum_Annealing_for_Particle_Matching/00_tests/01_out/sub_5_3',\
-        folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_6_1'),\
-        info_file_name='study_params_sub6_1.h5',\
-        old_info_file_name='study_params_sub5_1_1.h5')
+    main()
+    #_main_update_study_in_info_file(\
+    #    #folder_path_main=r'/Users/adam-1aeqn8vhvpjnv4u/mast_sub5/Quantum_Annealing_for_Particle_Matching/00_tests/01_out/sub_5_3',\
+    #    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_6_1'),\
+    #    info_file_name='study_params_sub6_1.h5',\
+    #    old_info_file_name='study_params_sub5_1_1.h5')
     
 
 # %%
