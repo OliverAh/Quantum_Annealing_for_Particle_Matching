@@ -743,7 +743,7 @@ def main():
     print(names)
 
     est_accum_runtime_h = 0.0
-    for study in reread_info_file['info']['study']['data'][:2]:
+    for study in reread_info_file['info']['study']['data']:
         is_anneal_offsets_n_qubits = False
         n_qubits_anneal_offsets = []
 
