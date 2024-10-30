@@ -77,25 +77,31 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
         raise ValueError('array_identifiers is required, you may obtain it from .extract_identifiers(...)')
     list_files_in_samples_dir = os.listdir(samples_folder_name_path)
     def _read_answs_to_dict(p_set_id):
-        global it, dict_for_df
+        global it, dict_for_df, tic
         it += 1
         p_set_id_dec = p_set_id.decode('utf-8')
         set_in_dir = p_set_id_dec+'.h5' in list_files_in_samples_dir
-        print(f'{it}/{array_identifiers.shape[0]} file {p_set_id_dec+'.h5'} in dir: {set_in_dir}\r', end='')
         if set_in_dir:
             p_set_file_name_path = pathlib.Path.joinpath(samples_folder_name_path, p_set_id_dec+'.h5')
             dict_for_df.update({p_set_id_dec: h5py_funcs.io.read_info_from_hdf5_file(file_name_path=p_set_file_name_path, driver='core')})
+        toc = time.time()
+        round_decimals_time = 1
+        round_decimals_freq = 3
+        time_estimated = (toc-tic)/(it/array_identifiers.shape[0])
+        freq = array_identifiers.shape[0]/time_estimated
+        print(f'{it}/{array_identifiers.shape[0]} file {p_set_id_dec+'.h5'} in dir: {set_in_dir}  ' \
+              f'{round(toc-tic,round_decimals_time)}s/{round(time_estimated, round_decimals_time)}s, {round(freq, round_decimals_freq)} it/s \r', end='')
         return
     # apparently reading hdf5 files is not io bound in this case, so 1 thread does as well as more
     #for num_threads in (50,25,15,10,5):
     #for num_threads in (1,2,3,4,5):
     for _num_threads in (num_threads,):
-        global it, dict_for_df
+        global it, dict_for_df, tic
         it = 0
         dict_for_df = {}
         tic = time.time()
         tp = multiprocessing.pool.ThreadPool(_num_threads)
-        tp.map(_read_answs_to_dict, array_identifiers)
+        tp.map(_read_answs_to_dict, array_identifiers,)
         print()
         toc = time.time()
         #print(f'\n{_num_threads} took [s] {toc-tic}')
