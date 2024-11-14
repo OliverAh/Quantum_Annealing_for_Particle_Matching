@@ -1,5 +1,6 @@
 import dimod
 import dwave
+import dwave.cloud.client.qpu # for some reason became necessary with dwave-ocean-sdk v0.13.1 on ubuntu server 24.04
 def _custom__getstate__dwave_cloud_config_models_ClientConfig(self):
     #print('customized __getstate of dwave.cloud.config.models.ClientConfig')
     state = self.__dict__.copy()

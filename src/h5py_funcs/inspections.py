@@ -83,7 +83,7 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
         set_in_dir = p_set_id_dec+'.h5' in list_files_in_samples_dir
         if set_in_dir:
             p_set_file_name_path = pathlib.Path.joinpath(samples_folder_name_path, p_set_id_dec+'.h5')
-            dict_for_df.update({p_set_id_dec: h5py_funcs.io.read_info_from_hdf5_file(file_name_path=p_set_file_name_path, driver='core')})
+            dict_for_df.update({p_set_id_dec: h5py_funcs.io.read_info_from_hdf5_file(file_name_path=p_set_file_name_path, driver=None)})
         toc = time.time()
         round_decimals_time = 1
         round_decimals_freq = 3
