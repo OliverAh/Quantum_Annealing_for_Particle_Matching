@@ -3,6 +3,8 @@ import sys
 import pathlib
 sys.path.append(str(pathlib.PurePath(pathlib.Path.cwd().parent)))
 
+from typing import Optional
+
 import os
 import multiprocessing
 import time
@@ -338,9 +340,9 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     sampler = DWaveSampler(**kwargs_dwavesampler)
     tmp_not_needed_as_a_variable = sampler.adjacency # required for sampler having all data needed for __getstate__, no idea why this is necessary
     print('done initializing dwave sampler')
-    #print('Annealer Properties:')
-    #for key, val in sampler.properties.items():
-    #    print('  ', key, val)
+    print('Annealer Properties:')
+    for key, val in sampler.properties.items():
+        print('  ', key, val)
     #print('annealing_time_range:', sampler.properties['annealing_time_range'])
     #sys.exit()
     
@@ -421,100 +423,26 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     print('num_qubits:', num_qubits)
     composite_fixed = FixedEmbeddingComposite(sampler, emb)
     est_time_s = np.zeros((study.shape[0], 1))
-    #for i in tqdm.tqdm(range(study.shape[0])):
-    #    params_sampling = {'label' : 'superdupernice label',
-    #              'num_reads': 1000, 
-    #              'answer_mode': 'raw'}
-    #    anneal_schedule = [[study[i,8+j],study[i,8+j+12]] for j in range(12)]
-    #    #print(anneal_schedule)
-    #    params_sampling.update({'anneal_schedule': anneal_schedule})
-    #    params_sampling.update({'flux_drift_compensation': True})
-    #    est_time_s[i] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
-    #    est_time_s[i] *= 1e-6
-    #print('estimated runtimes:', est_time_s)
-    #print('estimated overall runtime in s:', np.sum(est_time_s))    
-    #print('estimated overall runtime in h:', np.sum(est_time_s)/3600)    
-    #study = np.hstack((study, est_time_s))
-    #print(study)
-    
-    # copied from main() after erroneous sub_7_1_erroneous.py, as estimation of runtime was incorrect here
-    #print(salib_names)
-    #print(study[:2,:])
-    for index_study in tqdm.tqdm(range(study.shape[0])):
-        id = str(index_study)
-        id = id.encode('utf-8')
-        params_sampling = {id.decode('utf-8'): 
-                            {'identifier': id.decode('utf-8'),
-                             #'embedding': _emb,
-                             #'num_runs': 1,
-                             #'kwargs_sampling': {'Q':qubo, 'num_reads':1000, 'label':id.decode('utf-8'), 'answer_mode': 'raw'}}
-                             'kwargs_sampling': {'num_reads':1000, 'label':id.decode('utf-8'), 'answer_mode': 'raw'}}
-                             }
+    for i in tqdm.tqdm(range(2)):#study.shape[0])):
+        params_sampling = {'label' : 'superdupernice label',
+                  'num_reads': 1000, 
+                  'answer_mode': 'raw'}
+        anneal_schedule = [[study[i,8+j],study[i,8+j+12]] for j in range(12)]
+        params_sampling.update({'anneal_schedule': anneal_schedule})
+        params_sampling.update({'flux_drift_compensation': True})
+        est_time_s[i] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
+
+        print(anneal_schedule)
+        print(sampler.solver.estimate_qpu_access_time(num_qubits=num_qubits, num_reads=params_sampling['num_reads'], anneal_schedule=anneal_schedule, flux_drift_compensation=True))
+        print(est_time_s[i])
+        est_time_s[i] *= 1e-6
+        print(est_time_s[i])
         
-        is_anneal_offsets_n_qubits = False
-        n_qubits_anneal_offsets = []
-
-        for name in salib_names:
-            if name == 'estimated_runtime':
-                pass
-            elif name.startswith('anneal_offsets_'):
-                is_anneal_offsets_n_qubits = True
-                n_qubits_anneal_offsets.append(name.split('_')[2].split())
-                #print('n_qubits_anneal_offsets', n_qubits_anneal_offsets)
-        
-        if is_anneal_offsets_n_qubits:
-            _anneal_offsets = [0]*sampler.properties['num_qubits']
-            for _var, _qubits in emb.items():
-                chain_length = len(_qubits)
-                #print('chain_length', chain_length)
-                #print('_qubits', _qubits)
-                if [str(chain_length)] in n_qubits_anneal_offsets:
-                    for _q in _qubits:
-                        _anneal_offsets[_q] = study[index_study, salib_names.index('anneal_offsets_{}_qubits'.format(chain_length))]
-                    #print('anneal_offsets_{}_qubits'.format(chain_length), study[index_study, salib_names.index('anneal_offsets_{}_qubits'.format(chain_length))])
-
-            params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_offsets': _anneal_offsets})
-
-        anneal_schedule = [[study[index_study][8+j],study[index_study][8+j+12]] for j in range(12)]
-        #print('anneal_schedule', anneal_schedule)
-    
-        params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_schedule': anneal_schedule})
-
-        #if 0.5 <= study['sets']['flux_drift_compensation']:
-        #    fdc = True
-        #elif 0.5 > study['sets']['flux_drift_compensation']:
-        #    fdc = False
-        #else:
-        #    assert False, 'fdc could not be determined'
-        fdc = True
-        params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'flux_drift_compensation': fdc})
-        #print('flux_drift_compensation', study['sets']['flux_drift_compensation'])
-        print('flux_drift_compensation', params_sampling[id.decode('utf-8')]['kwargs_sampling']['flux_drift_compensation'])
-        for name in salib_names:
-            if name in ['programming_thermalization'\
-                   , 'readout_thermalization'\
-                    , 'chain_strength']:
-                _idx = salib_names.index(name)
-                print(name, study[index_study, _idx])
-                params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({name: study[index_study][_idx]})
-    
-    
-        est_time_s[index_study] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling[id.decode('utf-8')]['kwargs_sampling'])
-        est_time_s[index_study] *= 1e-6
-        print('estimated runtime for', id.decode('utf-8'), 'in s:', est_time_s[index_study])
-    print('estimated runtimes:')
-    #for t in est_time_s:
-    #    print('|', t)
-    print('estimated overall runtime in s:', np.sum(est_time_s[:]))    
-    print('estimated overall runtime in h:', np.sum(est_time_s[:])/3600)    
+    print('estimated runtimes:', est_time_s)
+    print('estimated overall runtime in s:', np.sum(est_time_s))    
+    print('estimated overall runtime in h:', np.sum(est_time_s)/3600)    
     study = np.hstack((study, est_time_s))
     #print(study)
-    
-    
-    
-    
-    
-    
     #sys.exit()
     #print(reread_info_file)
 
@@ -528,6 +456,8 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
                  'qubos':qubos,
                 'embs_files': embs_files_names}
     
+    sys.exit()
+
     h5py_funcs.parameterstudy_using_info_file.prepare_info_file(
         metadata_dict = metadata_dict, 
         problem_dict = problem_dict, 
@@ -794,9 +724,173 @@ def _main_determine_anneal_offset():
     #####
 
     #print(ans)
-    
 
     sys.exit()
+
+
+def estimate_qpu_access_time(sampler,
+                             num_qubits: int,
+                             num_reads: int = 1,
+                             annealing_time: Optional[float] = None,
+                             anneal_schedule: Optional[list[tuple[float, float]]] = None,
+                             initial_state:  Optional[list[tuple[float, float]]] = None,
+                             reverse_anneal: bool = False,
+                             reinitialize_state: bool = False,
+                             programming_thermalization: Optional[float] = None,
+                             readout_thermalization: Optional[float] = None,
+                             reduce_intersample_correlation: bool = False,
+                             **kwargs) -> float:
+    """Estimates QPU access time for a submission to the selected solver.
+    Estimates a problem’s quantum processing unit (QPU) access time from the
+    parameter values you specify, timing data provided in the ``problem_timing_data``
+    `solver property <https://docs.dwavesys.com/docs/latest/c_solver_properties.html>`_,
+    and the number of qubits used to embed the problem on the selected QPU, as
+    described in the
+    `system documentation <https://docs.dwavesys.com/docs/latest/c_qpu_timing.html>`_.
+    Requires that you provide the number of qubits to be used for your
+    problem submission. :term:`Embedding` is typically heuristic and the number
+    of required qubits can vary between executions.
+    Args:
+        num_qubits:
+            Number of qubits required to represent your binary quadratic model
+            on the selected solver.
+        num_reads:
+            Number of reads. Provide this value if you explicitly set ``num_reads``
+            in your submission.
+        annealing_time:
+            Annealing duration. Provide this value of if you set
+            ``annealing_time`` in your submission.
+        anneal_schedule:
+            Anneal schedule. Provide the ``anneal_schedule`` if you set it in
+            your submission.
+        initial_state:
+            Initial state. Provide the ``initial_state`` if your submission
+            uses reverse annealing.
+        reinitialize_state:
+            Set to ``True`` if your submission sets ``reinitialize_state``.
+        programming_thermalization:
+            programming thermalization time. Provide this value if you explicitly
+            set a value for ``programming_thermalization`` in your submission.
+        readout_thermalization:
+            Set to ``True`` if your submission sets ``readout_thermalization``.
+        reduce_intersample_correlation:
+            Set to ``True`` if your submission sets ``reduce_intersample_correlation``.
+    Returns:
+        Estimated QPU access time, in microseconds.
+    Raises:
+        KeyError: If a solver property, or a field in the ``problem_timing_data``
+            solver property, required by the timing model is missing for the
+            selected solver.
+        ValueError: If conflicting parameters are set or the selected solver
+            uses an unsupported timing model.
+    Examples:
+        This example estimates the QPU access time for a ferromagnetic problem
+        using all the selected QPU's qubits before deciding whether to submit
+        the problem.
+        .. testsetup::
+            estimated_runtime = 42657   # to test solver.sample_bqm()
+        >>> from dimod import BinaryQuadraticModel
+        >>> from dwave.cloud import Client
+        >>> reads = 100
+        >>> max_time = 100000
+        >>> with Client.from_config() as client:
+        ...    solver = client.get_solver(qpu=True)
+        ...    bqm = BinaryQuadraticModel({}, {edge: -1 for edge in solver.edges}, "BINARY")
+        ...    num_qubits = len(solver.nodes)
+        ...    estimated_runtime = solver.estimate_qpu_access_time(num_qubits, num_reads=reads) # doctest: +SKIP
+        ...    print("Estimate of {:.0f}us on {}".format(estimated_runtime, solver.name)) # doctest: +SKIP
+        ...    if estimated_runtime < max_time:
+        ...       computation = solver.sample_bqm(bqm, num_reads=reads)
+        Estimate of 42657us on Advantage_system4.1
+        >>> print("QPU access time: {:.0f}us".format(computation.timing["qpu_access_time"]))  # doctest: +SKIP
+        QPU access time: 42640us
+    """
+    if anneal_schedule and annealing_time:
+        raise ValueError("set only one of ``anneal_schedule`` or ``annealing_time``")
+    if anneal_schedule and anneal_schedule[0][1] == 1 and not initial_state:
+        raise ValueError("reverse annealing requested (``anneal_schedule`` "
+                         "starts with s==1) but ``initial_state`` not provided")
+    try:
+        problem_timing_data = sampler.properties['problem_timing_data']
+    except:
+        raise KeyError("selected solver is missing required property ``problem_timing_data``")
+    try:
+        version_timing_model = problem_timing_data['version']
+    except:
+        raise KeyError("selected solver is missing ``problem_timing_data`` field ``version``")
+    try:
+        typical_programming_time = problem_timing_data['typical_programming_time']
+        ra_with_reinit_prog_time_delta = problem_timing_data['reverse_annealing_with_reinit_prog_time_delta']
+        ra_without_reinit_prog_time_delta = problem_timing_data['reverse_annealing_without_reinit_prog_time_delta']
+        default_programming_thermalization = problem_timing_data['default_programming_thermalization']
+        default_annealing_time = problem_timing_data['default_annealing_time']
+        readout_time_model = problem_timing_data['readout_time_model']
+        readout_time_model_parameters = problem_timing_data['readout_time_model_parameters']
+        qpu_delay_time_per_sample = problem_timing_data['qpu_delay_time_per_sample']
+        ra_with_reinit_delay_time_delta = problem_timing_data['reverse_annealing_with_reinit_delay_time_delta']
+        ra_without_reinit_delay_time_delta = problem_timing_data['reverse_annealing_without_reinit_delay_time_delta']
+        decorrelation_max_nominal_anneal_time = problem_timing_data['decorrelation_max_nominal_anneal_time']
+        decorrelation_time_range = problem_timing_data['decorrelation_time_range']
+        default_readout_thermalization = problem_timing_data['default_readout_thermalization']
+    except KeyError as err:
+        err_msg = f"selected solver is missing ``problem_timing_data`` field " + \
+                  f"{err} required by timing model version {version_timing_model}"
+        raise ValueError(err_msg)
+    # Support for sapi timing model versions: 1.0.x
+    if not version_timing_model.startswith("1.0."):
+        raise ValueError(f"``estimate_qpu_access_time`` does not currently "
+                         f"support timing model {version_timing_model} "
+                         "used by the selected solver")
+    ra_programming_time = 0
+    ra_delay_time = 0
+    if anneal_schedule and anneal_schedule[0][1] == 1:
+        if reinitialize_state:
+            ra_programming_time = ra_with_reinit_prog_time_delta
+            ra_delay_time = ra_with_reinit_delay_time_delta
+        else:
+            ra_programming_time = ra_without_reinit_prog_time_delta
+            ra_delay_time = ra_without_reinit_delay_time_delta
+    if programming_thermalization:
+        programming_thermalization_time = programming_thermalization
+    else:
+        programming_thermalization_time = default_programming_thermalization
+    programming_time = typical_programming_time + ra_programming_time + \
+                       programming_thermalization_time
+    anneal_time = default_annealing_time
+    if annealing_time:
+        anneal_time = annealing_time
+    elif anneal_schedule:
+        anneal_time = anneal_schedule[-1][0]
+    n = len(readout_time_model_parameters)
+    if n % 2:
+         raise ValueError(f"for the selected solver, ``problem_timing_data`` "
+                          f"property field ``readout_time_model_parameters`` "
+                          f"is not of an even length as required by timing "
+                          f"model version {version_timing_model}")
+    q = readout_time_model_parameters[:n//2]
+    t = readout_time_model_parameters[n//2:]
+    if readout_time_model == 'pwl_log_log':
+        readout_time = pow(10, np.interp(np.emath.log10(num_qubits), q, t))
+    elif readout_time_model == 'pwl_linear':
+        readout_time = np.interp(num_qubits, q, t)
+    else:
+        raise ValueError("``estimate_qpu_access_time`` does not support "
+                         f"``readout_time_model`` value {readout_time_model} "
+                         f"in version {version_timing_model}")
+    if readout_thermalization:
+        readout_thermalization_time = readout_thermalization
+    else:
+        readout_thermalization_time = default_readout_thermalization
+    decorrelation_time = 0
+    if reduce_intersample_correlation:
+        r_min = decorrelation_time_range[0]
+        r_max = decorrelation_time_range[1]
+        decorrelation_time = anneal_time/decorrelation_max_nominal_anneal_time * (r_max - r_min) + r_min
+    sampling_time_per_read = anneal_time + readout_time + qpu_delay_time_per_sample + \
+        ra_delay_time + max(readout_thermalization_time, decorrelation_time)
+    sampling_time = num_reads * sampling_time_per_read
+    return sampling_time + programming_time
+
 
 def main():
     folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_7_1')
@@ -823,6 +917,9 @@ def main():
 
     est_accum_runtime_h = 0.0
     for study in reread_info_file['info']['study']['data']:
+        #if study['identifiers'].decode('utf-8') != 'zz_5148171364':
+        #    continue
+        print('found study', study['identifiers'])
         is_anneal_offsets_n_qubits = False
         n_qubits_anneal_offsets = []
 
@@ -866,7 +963,7 @@ def main():
         sp_update = {id.decode('utf-8'): 
                         {'identifier': id.decode('utf-8'),
                          'embedding': _emb,
-                         'num_runs': 10,
+                         'num_runs': 1,
                          'kwargs_sampling': {'Q':_qubo, 'num_reads':1000, 'label':id.decode('utf-8'), 'answer_mode': 'raw'}}
                          }
         if is_anneal_offsets_n_qubits:
@@ -879,7 +976,7 @@ def main():
             sp_update[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_offsets': _anneal_offsets})
         
         anneal_schedule = [[study['sets'][8+j],study['sets'][8+j+12]] for j in range(12)]
-        print('anneal_schedule', anneal_schedule)
+        #print('anneal_schedule', anneal_schedule)
         
         sp_update[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_schedule': anneal_schedule})
 
@@ -898,20 +995,69 @@ def main():
                     , 'chain_strength']:
                 sp_update[id.decode('utf-8')]['kwargs_sampling'].update({name: study['sets'][name]})
 
-        for key, value in sp_update[id.decode('utf-8')]['kwargs_sampling'].items():
-            print(key)
+        #for key, value in sp_update[id.decode('utf-8')]['kwargs_sampling'].items():
+        #    print(key)
         
-        if reread_info_file['info']['time_history'][id.decode('utf-8')]['attrs']['finished'] == False:
+        if True:#reread_info_file['info']['time_history'][id.decode('utf-8')]['attrs']['finished'] == False:
             print(id.decode('utf-8'), 'would be executed')
             sampler_params.update(sp_update)
             est_accum_runtime_h += study['sets']['estimated_runtime'] * sp_update[id.decode('utf-8')]['num_runs'] / 3600
+            print('|', 'stored', study['sets']['estimated_runtime'])
+            print('|', 'num_runs',sp_update[id.decode('utf-8')]['num_runs'])
+            
+            _tmp = _sampler.solver.estimate_qpu_access_time(\
+                num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,num_reads=sp_update[id.decode('utf-8')]['kwargs_sampling']['num_reads']\
+                ,annealing_time=sp_update[id.decode('utf-8')]['kwargs_sampling']['anneal_schedule'][-1][1]\
+                ,flux_drift_compensation=fdc)
+            print('|', '_tmp  ', _tmp)
 
-            print('stored estimated_runtime', study['sets']['estimated_runtime'])
+            _tmp_2 = estimate_qpu_access_time(\
+                sampler=_sampler\
+                ,num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,num_reads=sp_update[id.decode('utf-8')]['kwargs_sampling']['num_reads']\
+                ,annealing_time=sp_update[id.decode('utf-8')]['kwargs_sampling']['anneal_schedule'][-1][1]\
+                ,flux_drift_compensation=fdc\
+                ,readout_thermalization=sp_update[id.decode('utf-8')]['kwargs_sampling']['readout_thermalization'])
+            
+            print('|', '_tmp_2', _tmp_2)
+
+            _tmp_3 = estimate_qpu_access_time(\
+                sampler=_sampler\
+                ,num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,**sp_update[id.decode('utf-8')]['kwargs_sampling'])
+            print('|', '_tmp_3', _tmp_3)
+                
+            _tmp_4 = _sampler.solver.estimate_qpu_access_time(\
+                num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,**sp_update[id.decode('utf-8')]['kwargs_sampling'])
+            print('|', '_tmp_4', _tmp_4)
+
+            _tmp_5 = estimate_qpu_access_time(\
+                sampler=_sampler\
+                ,num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,num_reads=sp_update[id.decode('utf-8')]['kwargs_sampling']['num_reads']\
+                ,anneal_schedule=sp_update[id.decode('utf-8')]['kwargs_sampling']['anneal_schedule']\
+                ,flux_drift_compensation=fdc\
+                ,readout_thermalization=sp_update[id.decode('utf-8')]['kwargs_sampling']['readout_thermalization'])
+            
+            print('|', '_tmp_5', _tmp_5)
+
+            _tmp_6 = _sampler.solver.estimate_qpu_access_time(\
+                num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
+                ,num_reads=sp_update[id.decode('utf-8')]['kwargs_sampling']['num_reads']\
+                ,annealing_time=sp_update[id.decode('utf-8')]['kwargs_sampling']['anneal_schedule'][-1][1]\
+                ,flux_drift_compensation=fdc\
+                ,readout_thermalization=sp_update[id.decode('utf-8')]['kwargs_sampling']['readout_thermalization'])
+            print('|', '_tmp_6', _tmp_6)
+
             _tmp_7 = _sampler.solver.estimate_qpu_access_time(\
                 num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
                 ,**sp_update[id.decode('utf-8')]['kwargs_sampling'])
-            print('currently estimated runtime', _tmp_7)
-         
+            print('|', '_tmp_7', _tmp_7)
+
+
+            print(est_accum_runtime_h)
         #if est_accum_runtime_h > 3.25:
         #    print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
         #    break
@@ -978,8 +1124,8 @@ def main():
 
 # %%
 def main_reset_notfinished_runs_info_file():
-    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_4_2')
-    info_file_name = 'study_params_sub4_2.h5'
+    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_7_77')
+    info_file_name = 'study_params_sub7_77.h5'
     info_file_name_path = os.path.join(folder_path_main, info_file_name)
 
     dict_info_read = h5py_funcs.inspections.read_info_file_to_dict(info_file_name_path=info_file_name_path, infoset_name = 'info')

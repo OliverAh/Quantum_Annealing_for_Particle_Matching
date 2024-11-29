@@ -421,100 +421,21 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     print('num_qubits:', num_qubits)
     composite_fixed = FixedEmbeddingComposite(sampler, emb)
     est_time_s = np.zeros((study.shape[0], 1))
-    #for i in tqdm.tqdm(range(study.shape[0])):
-    #    params_sampling = {'label' : 'superdupernice label',
-    #              'num_reads': 1000, 
-    #              'answer_mode': 'raw'}
-    #    anneal_schedule = [[study[i,8+j],study[i,8+j+12]] for j in range(12)]
-    #    #print(anneal_schedule)
-    #    params_sampling.update({'anneal_schedule': anneal_schedule})
-    #    params_sampling.update({'flux_drift_compensation': True})
-    #    est_time_s[i] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
-    #    est_time_s[i] *= 1e-6
-    #print('estimated runtimes:', est_time_s)
-    #print('estimated overall runtime in s:', np.sum(est_time_s))    
-    #print('estimated overall runtime in h:', np.sum(est_time_s)/3600)    
-    #study = np.hstack((study, est_time_s))
-    #print(study)
-    
-    # copied from main() after erroneous sub_7_1_erroneous.py, as estimation of runtime was incorrect here
-    #print(salib_names)
-    #print(study[:2,:])
-    for index_study in tqdm.tqdm(range(study.shape[0])):
-        id = str(index_study)
-        id = id.encode('utf-8')
-        params_sampling = {id.decode('utf-8'): 
-                            {'identifier': id.decode('utf-8'),
-                             #'embedding': _emb,
-                             #'num_runs': 1,
-                             #'kwargs_sampling': {'Q':qubo, 'num_reads':1000, 'label':id.decode('utf-8'), 'answer_mode': 'raw'}}
-                             'kwargs_sampling': {'num_reads':1000, 'label':id.decode('utf-8'), 'answer_mode': 'raw'}}
-                             }
-        
-        is_anneal_offsets_n_qubits = False
-        n_qubits_anneal_offsets = []
-
-        for name in salib_names:
-            if name == 'estimated_runtime':
-                pass
-            elif name.startswith('anneal_offsets_'):
-                is_anneal_offsets_n_qubits = True
-                n_qubits_anneal_offsets.append(name.split('_')[2].split())
-                #print('n_qubits_anneal_offsets', n_qubits_anneal_offsets)
-        
-        if is_anneal_offsets_n_qubits:
-            _anneal_offsets = [0]*sampler.properties['num_qubits']
-            for _var, _qubits in emb.items():
-                chain_length = len(_qubits)
-                #print('chain_length', chain_length)
-                #print('_qubits', _qubits)
-                if [str(chain_length)] in n_qubits_anneal_offsets:
-                    for _q in _qubits:
-                        _anneal_offsets[_q] = study[index_study, salib_names.index('anneal_offsets_{}_qubits'.format(chain_length))]
-                    #print('anneal_offsets_{}_qubits'.format(chain_length), study[index_study, salib_names.index('anneal_offsets_{}_qubits'.format(chain_length))])
-
-            params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_offsets': _anneal_offsets})
-
-        anneal_schedule = [[study[index_study][8+j],study[index_study][8+j+12]] for j in range(12)]
-        #print('anneal_schedule', anneal_schedule)
-    
-        params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'anneal_schedule': anneal_schedule})
-
-        #if 0.5 <= study['sets']['flux_drift_compensation']:
-        #    fdc = True
-        #elif 0.5 > study['sets']['flux_drift_compensation']:
-        #    fdc = False
-        #else:
-        #    assert False, 'fdc could not be determined'
-        fdc = True
-        params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({'flux_drift_compensation': fdc})
-        #print('flux_drift_compensation', study['sets']['flux_drift_compensation'])
-        print('flux_drift_compensation', params_sampling[id.decode('utf-8')]['kwargs_sampling']['flux_drift_compensation'])
-        for name in salib_names:
-            if name in ['programming_thermalization'\
-                   , 'readout_thermalization'\
-                    , 'chain_strength']:
-                _idx = salib_names.index(name)
-                print(name, study[index_study, _idx])
-                params_sampling[id.decode('utf-8')]['kwargs_sampling'].update({name: study[index_study][_idx]})
-    
-    
-        est_time_s[index_study] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling[id.decode('utf-8')]['kwargs_sampling'])
-        est_time_s[index_study] *= 1e-6
-        print('estimated runtime for', id.decode('utf-8'), 'in s:', est_time_s[index_study])
-    print('estimated runtimes:')
-    #for t in est_time_s:
-    #    print('|', t)
-    print('estimated overall runtime in s:', np.sum(est_time_s[:]))    
-    print('estimated overall runtime in h:', np.sum(est_time_s[:])/3600)    
+    for i in tqdm.tqdm(range(study.shape[0])):
+        params_sampling = {'label' : 'superdupernice label',
+                  'num_reads': 1000, 
+                  'answer_mode': 'raw'}
+        anneal_schedule = [[study[i,8+j],study[i,8+j+12]] for j in range(12)]
+        #print(anneal_schedule)
+        params_sampling.update({'anneal_schedule': anneal_schedule})
+        params_sampling.update({'flux_drift_compensation': True})
+        est_time_s[i] = composite_fixed.child.solver.estimate_qpu_access_time(num_qubits=num_qubits, **params_sampling)
+        est_time_s[i] *= 1e-6
+    print('estimated runtimes:', est_time_s)
+    print('estimated overall runtime in s:', np.sum(est_time_s))    
+    print('estimated overall runtime in h:', np.sum(est_time_s)/3600)    
     study = np.hstack((study, est_time_s))
     #print(study)
-    
-    
-    
-    
-    
-    
     #sys.exit()
     #print(reread_info_file)
 
@@ -905,21 +826,15 @@ def main():
             print(id.decode('utf-8'), 'would be executed')
             sampler_params.update(sp_update)
             est_accum_runtime_h += study['sets']['estimated_runtime'] * sp_update[id.decode('utf-8')]['num_runs'] / 3600
-
-            print('stored estimated_runtime', study['sets']['estimated_runtime'])
-            _tmp_7 = _sampler.solver.estimate_qpu_access_time(\
-                num_qubits=sum(len(chain) for chain in sp_update[id.decode('utf-8')]['embedding'].values())\
-                ,**sp_update[id.decode('utf-8')]['kwargs_sampling'])
-            print('currently estimated runtime', _tmp_7)
          
-        #if est_accum_runtime_h > 3.25:
-        #    print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
-        #    break
+        if est_accum_runtime_h > 3.25:
+            print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
+            break
         #print(sampler_params)
     print(len(list(sampler_params.keys())), 'psets will be executed')
     print(f'estimated runtime is {est_accum_runtime_h}h')
     
-    sys.exit()
+    #sys.exit()
 
 
     
