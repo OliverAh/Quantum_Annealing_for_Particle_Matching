@@ -981,8 +981,8 @@ def main():
 
 # %%
 def main_reset_notfinished_runs_info_file():
-    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_4_2')
-    info_file_name = 'study_params_sub4_2.h5'
+    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_7_1')
+    info_file_name = 'study_params_sub7_1.h5'
     info_file_name_path = os.path.join(folder_path_main, info_file_name)
 
     dict_info_read = h5py_funcs.inspections.read_info_file_to_dict(info_file_name_path=info_file_name_path, infoset_name = 'info')
@@ -996,7 +996,7 @@ def main_reset_notfinished_runs_info_file():
 
     with h5py.File(info_file_name_path,'r+') as f:
         for obj in f['info']['time_history'].values():
-            if obj.attrs['finished']==False:# or obj.attrs['finished']==True:
+            if obj.attrs['finished']==False or obj.attrs['finished']==True:
                 print(type(obj), obj, obj.attrs, obj[()])
 
                 obj[1] = np.array(h5py_funcs.parameterstudy_using_info_file._current_datetime_as_string(-1e6))
@@ -1007,8 +1007,8 @@ def main_reset_notfinished_runs_info_file():
 # %%
 if __name__ == '__main__':
     print('This is the main process')
-    #main_reset_notfinished_runs_info_file()
-    main()
+    main_reset_notfinished_runs_info_file()
+    #main()
     #_main_update_study_in_info_file(\
     #    #folder_path_main=r'/Users/adam-1aeqn8vhvpjnv4u/mast_sub5/Quantum_Annealing_for_Particle_Matching/00_tests/01_out/sub_5_3',\
     #    folder_path_main = os.path.join(os.getcwd(), '01_out', 'sub_7_1'),\

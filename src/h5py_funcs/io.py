@@ -3,14 +3,15 @@ import os.path
 import numpy as np
 import concurrent.futures.thread
 #import multiprocessing # multiprocessing is a hell to fiddle with in Jupyter noteboks inside VS Code, so no imlementation for now 
-
+import pickle
+import codecs
 
 def _is_set_identifier_in_file_already(file_handle, set_identifier):
     if set_identifier in file_handle.keys():
         return True
     else:
         return False
-    
+
 
 def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str = '', name_suffix: str = '', overwrite_data_in_file=False, track_order=False) -> None:
     """ Writes data to a hdf5 file. If the file does not exist, it will be created. 
@@ -115,10 +116,22 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
                         elif isinstance(value, set):
                             file_handle_recur[data_name_recur].create_dataset(key_2, data=list(value))
                         elif isinstance(value, (np.ndarray, str, list, tuple)):
+                            
                             try:
                                 file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
                             except:
-                                file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
+                                print('I Error in writing data to file. Trying to convert data to string and write it to file.')
+                                print(key_2, type(key_2))
+                                print(value, type(value))
+                                try:
+                                    file_handle_recur[data_name_recur].create_dataset(key_2, data=str(value))
+                                except:
+                                    try:
+                                        _tmp_data = pickle.dumps(value)
+                                        _tmp_data = _tmp_data.encode('utf-8')
+                                        file_handle_recur[data_name_recur].create_dataset(key_2, data=_tmp_data)
+                                    except:
+                                        print('Could not write data to file. Skipping...', key_2, type(value), value)
                         #elif not isinstance(key, str):
                         #    file_handle_recur[data_name_recur].create_dataset(str(key), data=value)
                         elif isinstance(value, concurrent.futures.thread.ThreadPoolExecutor):
@@ -127,7 +140,21 @@ def write_to_hdf5_file(file_name_path='', dict_data: dict = {}, data_name: str =
                             continue
                         else:
                             print(key_2, type(value), value)
-                            file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
+                            try:
+                                file_handle_recur[data_name_recur].create_dataset(key_2, data=value)
+                            except:
+                                print('II Error in writing data to file. Trying to convert data to string and write it to file.')
+                                print(key_2, type(key_2))
+                                print(value, type(value))
+                                try:
+                                    file_handle_recur[data_name_recur].create_dataset(key_2, data=str(value))
+                                except:
+                                    try:
+                                        _tmp_data = pickle.dumps(value)
+                                        _tmp_data = _tmp_data.encode('utf-8')
+                                        file_handle_recur[data_name_recur].create_dataset(key_2, data=_tmp_data)
+                                    except:
+                                        print('Could not write data to file. Skipping...', key_2, type(value), value)
             
             if data_name == 'embedding':
                 dict_data_recur = {str(key): value for key, value in dict_data.items()} # keys are just integers, so convert to string
