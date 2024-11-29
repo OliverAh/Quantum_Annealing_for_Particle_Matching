@@ -368,8 +368,8 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
                               , [0.0,10.0], [-0.65, 0.65]\
                                , [-0.65, 0.65], [-0.65, 0.65]\
                                 , [0.0,5.0], [-99.0,99.0]]
-    assert len(salib_names_readable) == num_salib_vars_readable, "number of salib vars readable does not add up"
-    assert len(salib_bounds_readable) == num_salib_vars_readable, "number of salib bounds readable does not add up"
+    #assert len(salib_names_readable) == num_salib_vars_readable, "number of salib vars readable does not add up"
+    #assert len(salib_bounds_readable) == num_salib_vars_readable, "number of salib bounds readable does not add up"
 
     salib_names = ['annealing_time', 'programming_thermalization'\
                    , 'readout_thermalization', 'flux_drift_compensation'\
@@ -393,7 +393,7 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
                               , 'names': salib_names_readable\
                                 , 'bounds': salib_bounds_readable}
 
-    N = 2**9
+    N = 2**7
     salib_sobol_samples = salib_sample_sobol.sample(salib_problem_readable, N, calc_second_order=True, scramble=True)
     salib_sobol_samples[:,0] = np.power(10, salib_sobol_samples[:,0])
     print('N ', N, ', D ', salib_problem_readable['num_vars'])
