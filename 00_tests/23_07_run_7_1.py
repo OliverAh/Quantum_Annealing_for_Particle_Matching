@@ -823,6 +823,7 @@ def main():
 
     est_accum_runtime_h = 0.0
     for study in reread_info_file['info']['study']['data']:
+        print('found', study['identifiers'].decode('utf-8'))
         is_anneal_offsets_n_qubits = False
         n_qubits_anneal_offsets = []
 
@@ -899,7 +900,7 @@ def main():
                 sp_update[id.decode('utf-8')]['kwargs_sampling'].update({name: study['sets'][name]})
 
         for key, value in sp_update[id.decode('utf-8')]['kwargs_sampling'].items():
-            print(key)
+            print(key, value)
         
         if reread_info_file['info']['time_history'][id.decode('utf-8')]['attrs']['finished'] == False:
             print(id.decode('utf-8'), 'would be executed')
@@ -912,19 +913,21 @@ def main():
                 ,**sp_update[id.decode('utf-8')]['kwargs_sampling'])
             print('currently estimated runtime', _tmp_7)
          
-        #if est_accum_runtime_h > 3.25:
-        #    print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
-        #    break
+        if est_accum_runtime_h > 3.25:
+            print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
+            break
+        print()
         #print(sampler_params)
     print(len(list(sampler_params.keys())), 'psets will be executed')
     print(f'estimated runtime is {est_accum_runtime_h}h')
     
-    sys.exit()
+    #sys.exit()
 
 
     
     iterations = len(sampler_params)
-    chunk_size = 25
+    chunk_size = 4
+    num_processes = 4
     num_chunks = np.ceil(iterations/chunk_size).astype(int)
     chunks = _main_create_chunks(sampler_params, num_chunks)
     #print(chunks)
@@ -958,7 +961,7 @@ def main():
         p = multiprocessing.Process(target=child_process_target, args=inputs_target['args'], kwargs=inputs_target['kwargs'])
         process_list.append(p)
         process_counter += 1
-        if (process_counter >= 8) or (chunk_id == len(chunks)-1):
+        if (process_counter >= num_processes) or (chunk_id == len(chunks)-1):
             for pp in process_list:
                 pp.start()
             for pp in process_list:
