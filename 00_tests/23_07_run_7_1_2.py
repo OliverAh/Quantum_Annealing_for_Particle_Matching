@@ -921,13 +921,13 @@ def main():
     print(len(list(sampler_params.keys())), 'psets will be executed')
     print(f'estimated runtime is {est_accum_runtime_h}h')
     
-    sys.exit()
+    #sys.exit()
 
 
     
     iterations = len(sampler_params)
-    chunk_size = 4
-    num_processes = 4
+    chunk_size = 6
+    num_processes = 6
     num_chunks = np.ceil(iterations/chunk_size).astype(int)
     chunks = _main_create_chunks(sampler_params, num_chunks)
     #print(chunks)
