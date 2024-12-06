@@ -914,7 +914,7 @@ def main():
             print('currently estimated runtime', _tmp_7)
          
         if est_accum_runtime_h > 3.25:
-            print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3h, stop assembling sampler runs now')
+            print(f'accumulated runtime {est_accum_runtime_h}h exceeds 3.25h, stop assembling sampler runs now')
             break
         print()
         #print(sampler_params)
@@ -936,11 +936,7 @@ def main():
     print('num_chunks =', num_chunks)
     print(__name__)
     
-    with open('../API_Token_Juniq_Training_Delft.txt', mode='rt') as file:
-    #with open('../API_Token_Oliver_Dev.txt', mode='rt') as file:
-        token = file.readline().rstrip()
-        #kwargs_dwavesampler = {'token': token, 'architecture': 'pegasus', 'region': 'eu-central-1'}
-
+    
 
     #sys.exit()
 
