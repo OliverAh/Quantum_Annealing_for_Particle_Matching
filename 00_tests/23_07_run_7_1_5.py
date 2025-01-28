@@ -331,7 +331,8 @@ def _main_update_study_in_info_file(folder_path_main, info_file_name, old_info_f
     #print(reread_embeddings)
     emb = reread_embeddings['emb_5_5_mm01.h5'] # this is a dict in the form {(part i, pos j): [list of qubits]}
 
-    with open('../API_Token_Juniq_Training_Delft.txt') as file:
+    with open('../API_Token_MBD_qdem.txt', mode='rt') as file:
+    #with open('../API_Token_Juniq_Training_Delft.txt') as file:
         token = file.readline().rstrip()
     kwargs_dwavesampler = {'token' : token, 'region':'eu-central-1', 'architecture':'pegasus', 'name':'Advantage_system5.4'}
     print('Initialize dwave sampler')
@@ -742,7 +743,8 @@ def _main_determine_anneal_offset():
 
 
     import ast
-    with open('../API_Token_Juniq_Training_Delft.txt') as file:
+    with open('../API_Token_MBD_qdem.txt', mode='rt') as file:
+    #with open('../API_Token_Juniq_Training_Delft.txt') as file:
         token = file.readline().rstrip()
         architecture = file.readline().rstrip()
     kwargs_sampler = {'token' : token, 'architecture':'pegasus', 'region':'eu-central-1'}
@@ -808,8 +810,8 @@ def main():
     sampler_params = {}
     #for i, id in enumerate(reread_info_file['info']['study']['data']['identifiers'][:len(reread_embeddings)]):
     
-    #with open('../API_Token_MBD_qdem.txt', mode='rt') as file:
-    with open('../API_Token_Juniq_Training_Delft.txt', mode='rt') as file:
+    with open('../API_Token_MBD_qdem.txt', mode='rt') as file:
+    #with open('../API_Token_Juniq_Training_Delft.txt', mode='rt') as file:
         token = file.readline().rstrip()
     _sampler = DWaveSampler(**{'token' : token, 'architecture':'pegasus', 'region':'eu-central-1'})
             
