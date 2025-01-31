@@ -52,7 +52,7 @@ def Q_convert_to_dict_new_keys_iter(Q_array, num_particles: int):
     def key(it):
         return ((it[0]+1, it[1]+1), (it[2]+1, it[3]+1))
     iterator = itertools.product(range(num_particles), repeat=4)
-    Q_dict = {key(it):value(it) for it in iterator if value(it) != 0}
+    Q_dict = {str(key(it)):value(it) for it in iterator if value(it) != 0}
     return Q_dict
 
 def reduce_dict_to_nearest_neighbours(Q_dict, distances, num_nearest:int):
@@ -133,6 +133,17 @@ def q_dist_diag(distance_matrix):
             j_mat = i*num_particles + j
             q_dist[j_mat, j_mat] = distance_matrix[i,j]
     return q_dist
+
+# Q_1 rescaled
+def q_dist_diag_rescaled(distance_matrix, d1=0.03, asymptotic=2):
+    """Same as q_dist but rescale the distances harmonically.
+
+    d -> asymptotic * d / (d + d1) where d1 is a reasonable typical "hop" distance.
+    """
+    q_dist = q_dist_diag(distance_matrix)
+    return asymptotic * q_dist / (q_dist + d1)
+
+
 
 def q_dist_diag_sparse(distance_matrix):
     num_particles = np.shape(distance_matrix)[0]
