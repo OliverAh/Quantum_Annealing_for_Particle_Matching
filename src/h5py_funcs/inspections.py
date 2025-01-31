@@ -62,10 +62,14 @@ def extract_identifiers(dict_info_read:dict={}) -> list[np.ndarray,list,list]:
             t_hist_pset_data = dict_info_read['time_history'][p_set_id.decode('utf-8')]['data']
             yyyy_start = t_hist_pset_data[1].decode('utf-8')[:4] # year is sufficient in this case, because default date is in year 1910
             yyyy_finish = t_hist_pset_data[2].decode('utf-8')[:4] # year is sufficient in this case, because default date is in year 1910
-            if yyyy_start == '2024':
+            if yyyy_start in ('2024', '2025'):
                 started_psets.append(p_set_id)
-            if yyyy_finish == '2024':
+            #else:
+            #    print(f'p_set_id {p_set_id} started in {yyyy_start}')
+            if yyyy_finish in ('2024', '2025'):
                 finished_psets.append(p_set_id)
+            #else:
+            #    print(f'p_set_id {p_set_id} finished in {yyyy_finish}')
         return array_identifiers, started_psets, finished_psets
         
 def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_identifiers:np.ndarray=None, num_threads:int=2) -> dict:
