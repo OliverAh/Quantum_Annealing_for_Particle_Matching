@@ -5,8 +5,6 @@ import sys
 import pathlib
 sys.path.append(str(pathlib.PurePath(pathlib.Path.cwd().parent)))
 
-from . import read_ans
-
 import os
 import itertools
 import multiprocessing
