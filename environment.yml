@@ -1,4 +1,4 @@
-name: masterth_file
+name: masterth_file_joblib
 channels:
   - conda-forge
   - https://conda.anaconda.org/gurobi
@@ -16,6 +16,7 @@ dependencies:
   - SALib
   - plotly=5.*
   - nbformat>=4.2.0 #dependency of plotly within jupyter notebooks, for some reason not retrieved by plotly
+  - joblib
   - pip:
     - dwave-ocean-sdk
     - ipympl

@@ -5,9 +5,14 @@ import sys
 import pathlib
 sys.path.append(str(pathlib.PurePath(pathlib.Path.cwd().parent)))
 
+from . import read_ans
+
 import os
+import itertools
 import multiprocessing
 import multiprocessing.pool
+import joblib
+import tqdm
 import time
 import h5py
 import numpy as np
@@ -72,7 +77,37 @@ def extract_identifiers(dict_info_read:dict={}) -> list[np.ndarray,list,list]:
             #    print(f'p_set_id {p_set_id} finished in {yyyy_finish}')
         return array_identifiers, started_psets, finished_psets
         
+def read_answers_to_dict_concurrent(samples_folder_name_path:list[pathlib.Path]=None, array_identifiers:list[np.ndarray]=None, num_procs:int=4, backend='loky', batch_size=None):
+    print('read_answers_to_dict_concurrent')
+    
+    #print('  samples_folder_name_path', samples_folder_name_path)
+    #print('  array_identifiers', array_identifiers) # np.array(array_identifiers) has inhomogeneous shape as each samples folder can contain different number of sample files
+    #print('  np.array(a) for a in array_identifiers',tuple((np.array(a).shape, np.array(a)) for a in array_identifiers))
+
+    #sys.exit()
+
+    if backend != 'loky':
+        raise ValueError(f'backend={backend}, only loky backend is supported')
+    
+    whole_iterator = itertools.chain.from_iterable(itertools.product((sfnp,),ai) for sfnp,ai in zip(samples_folder_name_path,array_identifiers))
+    #print('  whole_iterator')
+    #for p in whole_iterator:
+    #    print('    ', p)
+    if batch_size is None:
+        batch_size = 'auto'
+    _reads = joblib.Parallel(n_jobs=num_procs, batch_size=batch_size, verbose=10)(joblib.delayed(read_answers_to_dict)(sfnp, np.array([ai])) for sfnp,ai in whole_iterator)
+
+    #with joblib.parallel_config(n_jobs=5, backend=backend, verbose=50):
+    #    _reads = joblib.Parallel(n_jobs=5, backend=backend, verbose=50)(joblib.delayed(read_answers_to_dict)(sfnp, np.array(ai)) for sfnp,ai in whole_iterator)
+
+    
+    return _reads
+
 def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_identifiers:np.ndarray=None, num_threads:int=2) -> dict:
+    #print('  read_answers_to_dict')#, samples_folder_name_path, array_identifiers)
+    #print('    samples_folder_name_path', samples_folder_name_path)
+    #print('    array_identifiers', array_identifiers)
+    #print('    num_threads', num_threads)
     if samples_folder_name_path==None:
         raise ValueError('samples_folder_name_path is required')
     elif isinstance(samples_folder_name_path, str):
@@ -80,9 +115,11 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
     elif not isinstance(array_identifiers,np.ndarray):
         raise ValueError('array_identifiers is required, you may obtain it from .extract_identifiers(...)')
     list_files_in_samples_dir = os.listdir(samples_folder_name_path)
-    def _read_answs_to_dict(p_set_id):
+    def _read_answs_to_dict(p_set_id, array_identifiers=array_identifiers):
+        #print('    _read_answs_to_dict', p_set_id)
         global it, dict_for_df, tic
         it += 1
+        #print('p_set_id', p_set_id)
         p_set_id_dec = p_set_id.decode('utf-8')
         set_in_dir = p_set_id_dec+'.h5' in list_files_in_samples_dir
         if set_in_dir:
@@ -93,8 +130,8 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
         round_decimals_freq = 3
         time_estimated = (toc-tic)/(it/array_identifiers.shape[0])
         freq = array_identifiers.shape[0]/time_estimated
-        print(f'{it}/{array_identifiers.shape[0]} file {p_set_id_dec+'.h5'} in dir: {set_in_dir}  ' \
-              f'{round(toc-tic,round_decimals_time)}s/{round(time_estimated, round_decimals_time)}s, {round(freq, round_decimals_freq)} it/s \r', end='')
+        #print(f'{it}/{array_identifiers.shape[0]} file {p_set_id_dec+'.h5'} in dir: {set_in_dir}  ' \
+        #      f'{round(toc-tic,round_decimals_time)}s/{round(time_estimated, round_decimals_time)}s, {round(freq, round_decimals_freq)} it/s \r', end='')
         return
     # apparently reading hdf5 files is not io bound in this case, so 1 thread does as well as more
     #for num_threads in (50,25,15,10,5):
@@ -104,9 +141,27 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
         it = 0
         dict_for_df = {}
         tic = time.time()
-        tp = multiprocessing.pool.ThreadPool(_num_threads)
-        tp.map(_read_answs_to_dict, array_identifiers,)
-        print()
+        #tp = multiprocessing.pool.ThreadPool(_num_threads)
+        #tp.map(_read_answs_to_dict, array_identifiers,)
+        if isinstance(array_identifiers, np.ndarray):
+            if array_identifiers.ndim == 1:
+                for i in range(array_identifiers.shape[0]):
+                    _read_answs_to_dict(array_identifiers[i])
+            elif array_identifiers.ndim == 2:
+                for i in range(array_identifiers.shape[0]):
+                    for j in range(array_identifiers.shape[1]):
+                        _read_answs_to_dict(array_identifiers[i,j])
+            else:
+                raise ValueError(f'array_identifiers must be of shape (n,) or (n,m), but is of shape {array_identifiers.shape}')
+        elif isinstance(array_identifiers, list):
+            for p_set_id in array_identifiers:
+                _read_answs_to_dict(p_set_id)
+        elif isinstance(array_identifiers, str):
+            _read_answs_to_dict(array_identifiers)
+        else:
+            raise ValueError(f'array_identifiers must be of type np.ndarray or list, but is of type {type(array_identifiers)}')
+        #_read_answs_to_dict(array_identifiers)
+        #print()
         toc = time.time()
         #print(f'\n{_num_threads} took [s] {toc-tic}')
     #        #160/2048 file zz_7106551505.h5 in dir: True
