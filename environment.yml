@@ -17,6 +17,8 @@ dependencies:
   - plotly=5.*
   - nbformat>=4.2.0 #dependency of plotly within jupyter notebooks, for some reason not retrieved by plotly
   - joblib
+  - seaborn
+  - scikit-learn
   - pip:
     - dwave-ocean-sdk
     - ipympl

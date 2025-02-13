@@ -314,6 +314,11 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return_dict['num_runs_is_found_best'] = num_runs_is_found_best
         return_dict['num_samples_is_found_best'] = num_samples_is_found_best
         return_dict['num_samples_is_found_best_per_run'] = num_samples_is_found_best_per_run
+
+        return_dict['fraction_runs_is_found_best'] = num_runs_is_found_best / num_runs
+        return_dict['fraction_samples_is_found_best'] = num_samples_is_found_best / num_samples
+        return_dict['fraction_samples_is_found_best_per_run'] = [num_samples_is_found_best_per_run[i] / num_samples_per_run[i] for i in range(num_runs)]
+
         return return_dict
 
     success_dict = {}
