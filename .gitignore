@@ -7,8 +7,13 @@
 **/ext/embera_orig/
 **/ext/glpk/
 **/**.gif
+**/**.png
+**/**.svg
 
 
+
+**/**.pickle
+**/**.marshal
 **/dict_for_df_*
 
 # files larger 100MB

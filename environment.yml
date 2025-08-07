@@ -1,7 +1,7 @@
-name: masterth_file_joblib
+name: masterth_file_inspect
 channels:
   - conda-forge
-  - https://conda.anaconda.org/gurobi
+#  - https://conda.anaconda.org/gurobi
 dependencies:
   - python=3.12
   - pip
@@ -12,13 +12,16 @@ dependencies:
   - matplotlib
   - h5py
   - pandas
-  - gurobi
+#  - gurobi
   - SALib
-  - plotly=5.*
+  - plotly
   - nbformat>=4.2.0 #dependency of plotly within jupyter notebooks, for some reason not retrieved by plotly
   - joblib
   - seaborn
   - scikit-learn
+  #- sqlalchemy
+  #- psycopg2
+  - statsmodels
   - pip:
     - dwave-ocean-sdk
     - ipympl

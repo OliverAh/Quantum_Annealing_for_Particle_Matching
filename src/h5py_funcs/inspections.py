@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from . import _statistics as stats
 
 import sys
 import pathlib
@@ -73,6 +74,7 @@ def extract_identifiers(dict_info_read:dict={}) -> list[np.ndarray,list,list]:
                 finished_psets.append(p_set_id)
             #else:
             #    print(f'p_set_id {p_set_id} finished in {yyyy_finish}')
+            #print(type(array_identifiers), type(started_psets), type(finished_psets))
         return array_identifiers, started_psets, finished_psets
         
 def read_answers_to_dict_concurrent(samples_folder_name_path:list[pathlib.Path]=None, array_identifiers:list[np.ndarray]=None, num_procs:int=4, backend='loky', batch_size=None):
@@ -174,7 +176,8 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
     #        #5 took [s] 76.96953821182251
     return dict_for_df
 
-def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_samples_to_compare:int=0, n_exact_sols_to_compare:int=0):
+def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_samples_to_compare:int=0, n_exact_sols_to_compare:int=0,
+                         is_skip_custom_key_in_dict_for_df:bool=False, is_print_sols:bool=False, is_print_meta:bool=False, print_prefix:str=' '):
     if dict_for_df==None or n_samples_to_compare==0 or n_exact_sols_to_compare==0 or not isinstance(exact_sols,np.recarray):
         raise ValueError('all inputs are required')
 
@@ -199,7 +202,7 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         names_subs_per_run.append(_tmp_list)
         return names_runs_unique, names_subs_per_run    
 
-    def _evaluate_success_rate(exact_sols:dimod.sampleset.SampleSet=None, sample_sols:dimod.sampleset.SampleSet=None, n_exact:int=1, n_samples:int=1, is_print_sols:bool=False, is_print_meta:bool=False, print_prefix:str=' '):
+    def _evaluate_success_rate(exact_sols:dimod.sampleset.SampleSet=None, sample_sols:dimod.sampleset.SampleSet=None, n_exact:int=1, n_samples:int=1, is_print_sols:bool=is_print_sols, is_print_meta:bool=is_print_meta, print_prefix:str=print_prefix):
         samplesets_names = list(sample_sols.keys())
         names_runs, names_subs_per_run = _group_subs_per_run(samplesets_names=samplesets_names)
         num_runs = len(names_runs)
@@ -322,10 +325,13 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return return_dict
 
     success_dict = {}
-    for id in list(dict_for_df.keys())[:]:
+    for id in dict_for_df.keys():
         #print(id)
-        samplesets = dict_for_df[id]['custom']['sampleset']
-        eval_dict = _evaluate_success_rate(exact_sols=exact_sols, sample_sols=samplesets, n_exact=n_exact_sols_to_compare, n_samples=n_samples_to_compare, is_print_sols=False, is_print_meta=False)
+        if not is_skip_custom_key_in_dict_for_df:
+            samplesets = dict_for_df[id]['custom']['sampleset']
+        else:
+            samplesets = dict_for_df[id]['sampleset']
+        eval_dict = _evaluate_success_rate(exact_sols=exact_sols, sample_sols=samplesets, n_exact=n_exact_sols_to_compare, n_samples=n_samples_to_compare)
         #print(eval_dict)
         success_dict[id] = {'is_found_best': np.any([val['is_found_best'] for val in eval_dict['submissions'].values()]), **eval_dict}
     return success_dict
@@ -404,9 +410,13 @@ def extract_started_sets_from_success_dict(success_dict:dict=None, dict_info_rea
         raise ValueError('dict_info_read is required for comparison, this might be omitted in the future')
     
     started_sets = [s.encode('utf-8') for s in success_dict.keys()]
-    ids_study = np.zeros(len(started_sets),dtype=int)
+    val_for_not_matched = -99
+    ids_study = val_for_not_matched * np.ones(len(started_sets),dtype=int)
+    print('started_sets\n', started_sets)
+    print('dict_info_read[study][data][identifiers]\n', dict_info_read['study']['data']['identifiers'])
     for i, id_started in enumerate(started_sets):
         ids_study[i] = np.argwhere(id_started == dict_info_read['study']['data']['identifiers'])[0,0]
+    
     study_matched_started_ids = np.lib.recfunctions.rec_append_fields(dict_info_read['study']['data'][ids_study], 'started sets', started_sets)
     
     return started_sets, study_matched_started_ids
