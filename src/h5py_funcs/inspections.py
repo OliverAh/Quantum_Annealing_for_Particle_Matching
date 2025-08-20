@@ -228,6 +228,18 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
             print(print_prefix, 'Number of runs:', num_runs)
             print(print_prefix, 'Number of submissions per run:', num_subs_per_run)
 
+        num_matched_key                         = f'num_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_matched_per_run_key                 = f'num_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_matched_per_sub_per_run_key         = f'num_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_key                 = f'num_samples_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_per_run_key         = f'num_samples_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_per_sub_per_run_key = f'num_samples_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+
+        fraction_runs_matched_key                     = f'fraction_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        fraction_samples_matched_key                    = f'fraction_samples_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        fraction_samples_matched_per_run_key            = f'fraction_samples_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        
+
         return_dict = {}
         return_dict['num_runs_is_found_best'] = num_runs_is_found_best
         return_dict['num_samples_is_found_best'] = num_samples_is_found_best
@@ -239,12 +251,13 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return_dict['num_samples'] = num_samples
         return_dict['num_samples_per_run'] = num_samples_per_run
         return_dict['num_samples_per_sub_per_run'] = num_samples_per_sub_per_run
-        return_dict['num_matched'] = num_matched
-        return_dict['num_matched_per_run'] = num_matched_per_run
-        return_dict['num_matched_per_sub_per_run'] = num_matched_per_sub_per_run
-        return_dict['num_samples_matched'] = num_samples_matched
-        return_dict['num_samples_matched_per_run'] = num_samples_matched_per_run
-        return_dict['num_samples_matched_per_sub_per_run'] = num_samples_matched_per_sub_per_run
+        return_dict[num_matched_key] = num_matched
+        return_dict[num_matched_per_run_key] = num_matched_per_run
+        return_dict[num_matched_per_sub_per_run_key] = num_matched_per_sub_per_run
+        return_dict[num_samples_matched_key] = num_samples_matched
+        return_dict[num_samples_matched_per_run_key] = num_samples_matched_per_run
+        return_dict[num_samples_matched_per_sub_per_run_key] = num_samples_matched_per_sub_per_run
+        
         return_dict['submissions'] = {}
         for _i, name_run in enumerate(names_runs):
             num_samples_per_run.append(0)
@@ -284,6 +297,11 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
                 return_dict['submissions'][name] = {}
                 return_dict['submissions'][name]['num_samples'] = _num_samples_sub
                 return_dict['submissions'][name]['is_found_best'] = np.array_equal(samples['sample'][0], exact_sols['sample'][0])
+                # if not return_dict['submissions'][name]['is_found_best']:
+                #     print(f'best solution not in samples for run {name_run}')
+                #     print('  best sample:', samples['energy'][0], samples['sample'][0])
+                #     print('  sim annealing best:', exact_sols['energy'][0], exact_sols['sample'][0])
+                
                 is_found_best_per_run[-1] = is_found_best_per_run[-1] or return_dict['submissions'][name]['is_found_best']
                 if return_dict['submissions'][name]['is_found_best']:
                     num_samples_is_found_best += samples['num_occurrences'][0]
@@ -307,12 +325,12 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
 
                             return_dict['submissions'][name]['matches_sample_exact'].append((i_s, i_e))
                 return_dict['submissions'][name]['num_matched'] = num_matched_per_sub_per_run[-1][-1].real
-                return_dict['num_matched'] = num_matched
-                return_dict['num_matched_per_run'] = num_matched_per_run
-                return_dict['num_matched_per_sub_per_run'] = num_matched_per_sub_per_run
-                return_dict['num_samples_matched'] = num_samples_matched
-                return_dict['num_samples_matched_per_run'] = num_samples_matched_per_run
-                return_dict['num_samples_matched_per_sub_per_run'] = num_samples_matched_per_sub_per_run
+                return_dict[num_matched_key] = num_matched
+                return_dict[num_matched_per_run_key] = num_matched_per_run
+                return_dict[num_matched_per_sub_per_run_key] = num_matched_per_sub_per_run
+                return_dict[num_samples_matched_key] = num_samples_matched
+                return_dict[num_samples_matched_per_run_key] = num_samples_matched_per_run
+                return_dict[num_samples_matched_per_sub_per_run_key] = num_samples_matched_per_sub_per_run
         num_runs_is_found_best = np.sum(is_found_best_per_run)
         return_dict['num_runs_is_found_best'] = num_runs_is_found_best
         return_dict['num_samples_is_found_best'] = num_samples_is_found_best
@@ -321,6 +339,10 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return_dict['fraction_runs_is_found_best'] = num_runs_is_found_best / num_runs
         return_dict['fraction_samples_is_found_best'] = num_samples_is_found_best / num_samples
         return_dict['fraction_samples_is_found_best_per_run'] = [num_samples_is_found_best_per_run[i] / num_samples_per_run[i] for i in range(num_runs)]
+        return_dict[fraction_runs_matched_key] = num_matched / num_runs
+        return_dict[fraction_samples_matched_key] = num_samples_matched / num_samples
+        return_dict[fraction_samples_matched_per_run_key] = [num_samples_matched_per_run[i] / num_samples_per_run[i] for i in range(num_runs)]
+
 
         return return_dict
 

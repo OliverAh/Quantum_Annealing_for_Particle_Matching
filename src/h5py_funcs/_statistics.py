@@ -45,7 +45,6 @@ class univariate_statistics:
         elif isinstance(columns, list):
             return self.data.var(axis=0)
 
-
     def get_std(self, columns: None|str|list[str] = None) -> list[float]:
         if columns is None:
             return self.data.std(axis=0)
@@ -53,7 +52,6 @@ class univariate_statistics:
             return [self.data[columns].std(axis=0)]
         elif isinstance(columns, list):
             return self.data.std(axis=0)
-        
 
     def get_median(self, columns: None|str|list[str] = None) -> list[float]:
         if columns is None:
