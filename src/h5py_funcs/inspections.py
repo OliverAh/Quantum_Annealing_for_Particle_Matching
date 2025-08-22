@@ -228,14 +228,13 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
             print(print_prefix, 'Number of runs:', num_runs)
             print(print_prefix, 'Number of submissions per run:', num_subs_per_run)
 
-        num_matched_key                         = f'num_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-        num_matched_per_run_key                 = f'num_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-        num_matched_per_sub_per_run_key         = f'num_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-        num_samples_matched_key                 = f'num_samples_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-        num_samples_matched_per_run_key         = f'num_samples_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-        num_samples_matched_per_sub_per_run_key = f'num_samples_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
-
-        fraction_runs_matched_key                     = f'fraction_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_matched_key                                 = f'num_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_matched_per_run_key                         = f'num_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_matched_per_sub_per_run_key                 = f'num_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_key                         = f'num_samples_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_per_run_key                 = f'num_samples_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        num_samples_matched_per_sub_per_run_key         = f'num_samples_matched_per_sub_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
+        fraction_runs_matched_key                       = f'fraction_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
         fraction_samples_matched_key                    = f'fraction_samples_matched_{n_samples_to_compare}_{n_exact_sols_to_compare}'
         fraction_samples_matched_per_run_key            = f'fraction_samples_matched_per_run_{n_samples_to_compare}_{n_exact_sols_to_compare}'
         
