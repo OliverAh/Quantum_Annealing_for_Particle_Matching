@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from . import _statistics as stats
 
@@ -178,6 +179,7 @@ def read_answers_to_dict(samples_folder_name_path:pathlib.Path=None, array_ident
 
 def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_samples_to_compare:int=0, n_exact_sols_to_compare:int=0,
                          is_skip_custom_key_in_dict_for_df:bool=False, is_print_sols:bool=False, is_print_meta:bool=False, print_prefix:str=' '):
+    import copy
     if dict_for_df==None or n_samples_to_compare==0 or n_exact_sols_to_compare==0 or not isinstance(exact_sols,np.recarray):
         raise ValueError('all inputs are required')
 
@@ -201,6 +203,35 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
                 _tmp_list.append(name_split[1:])
         names_subs_per_run.append(_tmp_list)
         return names_runs_unique, names_subs_per_run    
+
+    def _aggregate_samples(ar):
+        '''From dimod/dimod/sampleset.py -> def aggregate(self) with minimal changes.
+        https://github.com/dwavesystems/dimod/blob/0.12.20/dimod/sampleset.py#L1514'''
+        _, indices, inverse = np.unique(ar['_record']['data']['sample'], axis=0,
+                                        return_index=True, return_inverse=True)
+
+        # unique also sorts the array which we don't want, so we undo the sort
+        order = np.argsort(indices)
+        indices = indices[order]
+
+        # and on the inverse
+        revorder = np.empty(len(order), dtype=order.dtype)
+        revorder[order] = np.arange(len(order))
+        inverse = revorder[inverse]
+
+        record = ar['_record']['data'][indices]
+
+        # fix the number of occurrences
+        record['num_occurrences'] = 0
+        for old_idx, new_idx in enumerate(inverse):
+            record["num_occurrences"][new_idx] += ar['_record']['data'][old_idx]['num_occurrences']
+
+        # dev note: we don't check the energies as they should be the same
+        # for individual samples
+        #print(list(ar.keys()))
+        #print(ar['_record'])
+        return {'_record':{'data':record}, '_variables':ar['_variables'], '_info':copy.deepcopy(ar['_info']),
+                          '_vartype':None}
 
     def _evaluate_success_rate(exact_sols:dimod.sampleset.SampleSet=None, sample_sols:dimod.sampleset.SampleSet=None, n_exact:int=1, n_samples:int=1, is_print_sols:bool=is_print_sols, is_print_meta:bool=is_print_meta, print_prefix:str=print_prefix):
         samplesets_names = list(sample_sols.keys())
@@ -258,6 +289,7 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return_dict[num_samples_matched_per_sub_per_run_key] = num_samples_matched_per_sub_per_run
         
         return_dict['submissions'] = {}
+        __list_dfs = []###############################################
         for _i, name_run in enumerate(names_runs):
             num_samples_per_run.append(0)
             num_samples_per_sub_per_run.append([])
@@ -276,9 +308,15 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
                     name = name_run + '_' + name_sub
                 else:
                     raise ValueError(f'Could not create key of sampleset from name_sub={name_sub}')
+                #print('name_run', 'name', name_run, name)
 
-                samples = sample_sols[name]['_record']['data']
+                samples_agg = _aggregate_samples(sample_sols[name])
+                samples = samples_agg['_record']['data']
+                #samples = sample_sols[name]['_record']['data']
                 samples.sort(order='energy')
+                __list_dfs.append(pd.DataFrame(samples.tolist(), columns=samples.dtype.names))###########################################
+                #print('samples_agg')
+                #print(samples)
                 if is_print_sols:
                     print(print_prefix, 'Sampled solutions')
                     print(samples[:n_samples])
@@ -309,20 +347,25 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
                 return_dict['submissions'][name]['matches_sample_exact'] = []
                 num_matched_per_sub_per_run[-1].append(0)
                 num_samples_matched_per_sub_per_run[-1].append(0)
-                for i_s in range(n_samples):
-                    for i_e in range(n_exact):
-                        is_contained = np.array_equal(samples['sample'][i_s], exact_sols['sample'][i_e])
-                        if is_print_meta:
-                            print('matched samp exac:', i_s, i_e, is_contained)
-                        if is_contained:
-                            num_matched += 1
-                            num_matched_per_run[-1] += 1
-                            num_matched_per_sub_per_run[-1][-1] += 1
-                            num_samples_matched += samples['num_occurrences'][i_s]
-                            num_samples_matched_per_run[-1] += samples['num_occurrences'][i_s]
-                            num_samples_matched_per_sub_per_run[-1][-1] += samples['num_occurrences'][i_s]
-
-                            return_dict['submissions'][name]['matches_sample_exact'].append((i_s, i_e))
+                #for i_s in range(n_samples):
+                #    for i_e in range(n_exact):
+                #        is_contained = np.array_equal(samples['sample'][i_s], exact_sols['sample'][i_e])
+                #        if is_print_meta:
+                #            print('matched samp exac:', i_s, i_e, is_contained)
+                #        if is_contained:
+                #            #print('matched samp exac:', i_s, i_e, is_contained)
+                #            #print(samples['sample'][i_s])
+                #            #print(exact_sols['sample'][i_e])
+                #            assert np.all(0 == samples['sample'][i_s] - exact_sols['sample'][i_e])
+                #            num_matched += 1
+                #            num_matched_per_run[-1] += 1
+                #            num_matched_per_sub_per_run[-1][-1] += 1
+                #            num_samples_matched += samples['num_occurrences'][i_s]
+                #            #print('#####_number_added', name, i_s, i_e, samples['num_occurrences'][i_s], samples['sample'][i_s], exact_sols['sample'][i_e])
+                #            num_samples_matched_per_run[-1] += samples['num_occurrences'][i_s]
+                #            num_samples_matched_per_sub_per_run[-1][-1] += samples['num_occurrences'][i_s]
+                #
+                #            return_dict['submissions'][name]['matches_sample_exact'].append((i_s, i_e))
                 return_dict['submissions'][name]['num_matched'] = num_matched_per_sub_per_run[-1][-1].real
                 return_dict[num_matched_key] = num_matched
                 return_dict[num_matched_per_run_key] = num_matched_per_run
@@ -342,7 +385,23 @@ def extract_success_dict(dict_for_df:dict=None, exact_sols:np.recarray=None, n_s
         return_dict[fraction_samples_matched_key] = num_samples_matched / num_samples
         return_dict[fraction_samples_matched_per_run_key] = [num_samples_matched_per_run[i] / num_samples_per_run[i] for i in range(num_runs)]
 
-
+        __combined_df = pd.concat(__list_dfs)
+        __combined_df['sample'] = __combined_df['sample'].apply(lambda x: tuple(x))
+        __res_df = __combined_df.groupby('sample', as_index=False).aggregate({'energy':'first',	'num_occurrences':'sum','chain_break_fraction': 'first'})
+        __res_df = __res_df.sort_values('energy')
+        # print(__res_df['sample'].head())
+        # print(np.array(__res_df['sample'].iloc[0],dtype=int))
+        # print(exact_sols['sample'][0].astype(int))
+        # print(np.array_equal(np.array(__res_df['sample'].iloc[0]), exact_sols['sample'][0].astype(int)))
+        for i_s in range(n_samples):
+            return_dict.update({f'num_samples_matched_corrected_{i_s+1}_{i_e+1}': 0 for i_e in range(n_exact)})
+            for i_e in range(n_exact):
+                #print(np.array(__res_df['sample'][i_s]), exact_sols['sample'][i_e])
+                is_equal = np.array_equal(np.array(__res_df['sample'].iloc[i_s]), exact_sols['sample'][i_e].astype(int))
+                if is_equal:
+                    for ii_s in range(i_s+1):
+                        return_dict[f'num_samples_matched_corrected_{i_s+1}_{i_e+1}'] += __res_df['num_occurrences'].iloc[ii_s]
+                return_dict[f'fraction_samples_matched_corrected_{i_s+1}_{i_e+1}'] = return_dict[f'num_samples_matched_corrected_{i_s+1}_{i_e+1}'] / return_dict['num_samples']
         return return_dict
 
     success_dict = {}
